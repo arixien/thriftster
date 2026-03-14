@@ -1,0 +1,1 @@
+<?= view('includes/header_view') ?>
