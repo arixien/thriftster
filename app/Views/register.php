@@ -1,4 +1,5 @@
-<form method="post">
+<form method="post" action="/auth/register">
+    <?= csrf_field() ?>
     <?= isset($validation) ? $validation->listErrors() : '' ?>
     Username: <input type="text" name="username"><br>
     Email: <input type="email" name="email"><br>

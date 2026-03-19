@@ -9,10 +9,10 @@ class Auth extends BaseController
         helper(['form']);
         $data = [];
 
-        if ($this->request->getMethod() == 'post') {
+        if ($this->request->is('post')) {
             $rules = [
                 'username' => 'required|min_length[3]|max_length[20]|is_unique[users.username]',
-                'email' => 'required|valid_email|is_unique[users.email]',
+                'email'    => 'required|valid_email|is_unique[users.email]',
                 'password' => 'required|min_length[6]',
             ];
 
@@ -20,7 +20,7 @@ class Auth extends BaseController
                 $model = new UserModel();
                 $model->save([
                     'username' => $this->request->getPost('username'),
-                    'email' => $this->request->getPost('email'),
+                    'email'    => $this->request->getPost('email'),
                     'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 ]);
                 return redirect()->to('/auth/login');
@@ -29,7 +29,7 @@ class Auth extends BaseController
             }
         }
 
-        echo view('register', $data);
+        return view('register', $data);
     }
 
     public function login()
@@ -37,7 +37,7 @@ class Auth extends BaseController
         helper(['form']);
         $data = [];
 
-        if ($this->request->getMethod() == 'post') {
+        if ($this->request->is('post')) {
             $model = new UserModel();
             $user = $model->where('username', $this->request->getPost('username'))->first();
 
@@ -45,11 +45,11 @@ class Auth extends BaseController
                 session()->set('username', $user['username']);
                 return redirect()->to('/dashboard');
             } else {
-                $data['error'] = "Invalid username or password";
+                $data['error'] = 'Invalid username or password';
             }
         }
 
-        echo view('login', $data);
+        return view('login', $data);
     }
 
     public function logout()
@@ -58,4 +58,3 @@ class Auth extends BaseController
         return redirect()->to('/auth/login');
     }
 }
-?>
