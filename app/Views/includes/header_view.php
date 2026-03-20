@@ -40,7 +40,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         <!-- ── LEFT: Logo ── -->
         <a href="index.php" class="logo-link" aria-label="Go to homepage">
             <div class="logo-badge">
-                <img src="assets/logo.png"
+                <img src="assets/header/logo.png"
                      alt="Logo"
                      class="logo-img"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
