@@ -1,7 +1,7 @@
 <?= view('includes/header_view') ?>
 
 <!-- Page CSS -->
-<link rel="stylesheet" href="<?= base_url('public/css/pages/products_catalog_view.css') ?>">
+<link rel="stylesheet" href="<?= base_url('css/pages/products_catalog_view.css') ?>">
 
 <div class="container mt-5">
 
