@@ -1,7 +1,6 @@
 <?php
 /**
  * header_view.php
- * Thriftster - Site Header
  * Colors: #E6A7B2, #E2B4B8, #D2C4BC, #E0CCD8, #EDCED4
  * Fonts: Cinzel Bold, Crimson Pro Bold, Poppins Regular
  */
@@ -76,7 +75,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
 
             <!-- Product Catalog -->
             <div class="nav-item-wrap">
-                <a href="catalog.php"
+                <a href="products_catalog_view"
                    class="nav-link-custom <?= $current_page === 'catalog' ? 'active' : '' ?>">
                     <span>Product Catalog</span>
                 </a>
@@ -137,19 +136,8 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
 
         </nav>
 
-        <!-- ── Mobile Toggle ── -->
-        <button class="mobile-menu-toggle d-md-none" 
-                type="button" 
-                data-bs-toggle="offcanvas" 
-                data-bs-target="#mobileNav"
-                aria-controls="mobileNav"
-                aria-label="Open menu">
-            <i class="bi bi-list"></i>
-        </button>
-
-    </div><!-- /header-inner -->
+    </div>
 </header>
-<!-- ===== /SITE HEADER ===== -->
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
