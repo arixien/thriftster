@@ -962,3 +962,52 @@ body {
     .catalog-count         { display: none; }
     .filter-panel          { width: 88vw !important; }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   CATEGORY PILL — shown on product cards in the "All Items" tab
+   ══════════════════════════════════════════════════════════════ */
+
+.product-cat-pill {
+    position: absolute;
+    bottom: 10px;   /* sits just above the info bar */
+    left: 10px;
+    z-index: 2;
+    padding: 2px 9px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+/* Tops — soft rose */
+.product-cat-pill.cat-tops {
+    background: rgba(230, 167, 178, 0.82);
+    color: #6b2d3e;
+    border: 1px solid rgba(201, 125, 142, 0.50);
+}
+
+/* Bottoms — warm taupe */
+.product-cat-pill.cat-bottoms {
+    background: rgba(210, 196, 188, 0.88);
+    color: #5c4438;
+    border: 1px solid rgba(180, 160, 148, 0.55);
+}
+
+/* Dresses — lilac */
+.product-cat-pill.cat-dresses {
+    background: rgba(224, 204, 216, 0.88);
+    color: #5a3a58;
+    border: 1px solid rgba(180, 140, 170, 0.50);
+}
+
+/* Vintage — aged gold */
+.product-cat-pill.cat-vintage {
+    background: rgba(232, 210, 168, 0.88);
+    color: #5c4010;
+    border: 1px solid rgba(190, 160, 100, 0.55);
+}
