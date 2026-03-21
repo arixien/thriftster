@@ -111,8 +111,6 @@ $all_products = array_merge(
 );
 
 // ── Select active dataset ─────────────────────────────────────
-// 'new' dynamically pulls every product with badge === 'New' across all categories
-// so you never need a separate $new_products array — just set badge='New' on any item
 $products = match ($active_cat) {
     'new'         => array_values(array_filter($all_products, fn($p) => $p['badge'] === 'New')),
     'tops'        => $tops_products,
@@ -307,8 +305,6 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
             <?php else: ?>
             <div class="product-grid row g-4">
                 <?php foreach ($paged_products as $i => $product):
-                    // img paths are relative to public/ (e.g. assets/tops/top1_A.png)
-                    // FCPATH points to public/, so file_exists(FCPATH . $img_path) works correctly
                     $img_path   = $product['img'];
                     $img_exists = !empty($img_path) && file_exists(FCPATH . $img_path);
                 ?>
@@ -323,12 +319,6 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                                     <?= htmlspecialchars($product['badge']) ?>
                                 </span>
                             <?php endif; ?>
-
-                            <!-- Wishlist -->
-                            <button class="wishlist-btn" aria-label="Add to wishlist"
-                                    data-product-id="<?= $product['id'] ?>">
-                                <i class="bi bi-heart"></i>
-                            </button>
 
                             <!-- Image -->
                             <a href="product_detail.php?id=<?= $product['id'] ?>" class="product-img-link">
@@ -510,32 +500,6 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    /* ── Wishlist toggle (localStorage) ── */
-    (function () {
-        const stored = JSON.parse(localStorage.getItem('wishlist') || '[]');
-        const wishlistSet = new Set(stored.map(String));
-
-        document.querySelectorAll('.wishlist-btn').forEach(btn => {
-            const id = btn.dataset.productId;
-            if (wishlistSet.has(id)) {
-                btn.classList.add('wishlisted');
-                btn.querySelector('i').className = 'bi bi-heart-fill';
-            }
-            btn.addEventListener('click', () => {
-                if (wishlistSet.has(id)) {
-                    wishlistSet.delete(id);
-                    btn.classList.remove('wishlisted');
-                    btn.querySelector('i').className = 'bi bi-heart';
-                } else {
-                    wishlistSet.add(id);
-                    btn.classList.add('wishlisted');
-                    btn.querySelector('i').className = 'bi bi-heart-fill';
-                }
-                localStorage.setItem('wishlist', JSON.stringify([...wishlistSet]));
-            });
-        });
-    })();
-
     /* ── Add to Cart feedback ── */
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', function () {
