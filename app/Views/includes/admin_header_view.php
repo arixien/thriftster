@@ -63,16 +63,16 @@ $current_uri = uri_string();
 
             <!-- Products -->
             <div class="nav-item-wrap">
-                <a href="<?= base_url('/products_catalog_view') ?>"
-                   class="nav-link-custom <?= $current_uri === 'products_catalog_view' ? 'active' : '' ?>">
+                <a href="<?= base_url('/admin/products') ?>"
+                   class="nav-link-custom <?= $current_uri === 'admin/products' ? 'active' : '' ?>">
                     <span>Products</span>
                 </a>
             </div>
 
             <!-- Orders -->
             <div class="nav-item-wrap">
-                <a href="<?= base_url('/orders') ?>"
-                   class="nav-link-custom <?= $current_uri === 'orders' ? 'active' : '' ?>">
+                <a href="<?= base_url('/admin/orders') ?>"
+                   class="nav-link-custom <?= $current_uri === 'admin/orders' ? 'active' : '' ?>">
                     <span>Orders</span>
                 </a>
             </div>
