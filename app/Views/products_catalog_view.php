@@ -1,7 +1,7 @@
 <?php
 /**
  * products_catalog_view.php
- * All categories: Tops & Blouses, Bottoms & Skirts, Dresses, Vintage Picks
+ * Categories: New Arrivals, Tops/Dresses, Bottoms/Skirts, Accessories, Bags, Last Chance
  */
 
 // ── Active filters ──────────────────────────────────────────
@@ -12,105 +12,129 @@ $items_per_page   = 12;
 
 // ── Category tabs ───────────────────────────────────────────
 $categories = [
-    'all'     => 'All Items',
-    'tops'    => 'Tops & Blouses',
-    'bottoms' => 'Bottoms & Skirts',
-    'dresses' => 'Dresses',
-    'vintage' => 'Vintage Picks',
+    'all'         => 'All Items',
+    'new'         => 'New Arrivals',
+    'tops'        => 'Tops/Dresses',
+    'bottoms'     => 'Bottoms/Skirts',
+    'accessories' => 'Accessories',
+    'bags'        => 'Bags',
+    'last'        => 'Last Chance',
 ];
 
-// ══════════════════════════════════════════════════════════════
-// PRODUCT DATA
-// img paths are relative to public/ — used with:
-//   base_url($img_path)  → for the <img src>
-//   FCPATH . $img_path   → for file_exists() check
-// ══════════════════════════════════════════════════════════════
-
-// ── Tops & Blouses ──────────────────────────────────────────
+// ── Tops/Dresses ─────────────────────────────────────────────
 $tops_products = [
-    ['id'=>101,'name'=>'Primrose Ribbed Baby Tee',    'price'=>320, 'img'=>'assets/tops/top1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'tops'],
-    ['id'=>102,'name'=>'Mint Lace Crop',              'price'=>240, 'img'=>'assets/tops/top2_A.png',  'badge'=>null,   'added_at'=>'2025-06-08','condition'=>'good',     'category'=>'tops'],
-    ['id'=>103,'name'=>'Mauve Bow-Lace Bodice',       'price'=>380, 'img'=>'assets/tops/top3_A.png',  'badge'=>null,   'added_at'=>'2025-06-05','condition'=>'good',     'category'=>'tops'],
-    ['id'=>104,'name'=>'Cream Peter Pan Lace Blouse', 'price'=>290, 'img'=>'assets/tops/top4_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-01','condition'=>'excellent','category'=>'tops'],
-    ['id'=>105,'name'=>'Sage Tie-Front Cardigan',     'price'=>410, 'img'=>'assets/tops/top5_A.png',  'badge'=>'New',  'added_at'=>'2025-06-12','condition'=>'excellent','category'=>'tops'],
-    ['id'=>106,'name'=>'Cornflower Blue Velour Crop', 'price'=>350, 'img'=>'assets/tops/top6_A.png',  'badge'=>null,   'added_at'=>'2025-05-28','condition'=>'good',     'category'=>'tops'],
-    ['id'=>107,'name'=>'Ivory Angel-Sleeve Corset',   'price'=>460, 'img'=>'assets/tops/top7_A.png',  'badge'=>null,   'added_at'=>'2025-05-25','condition'=>'excellent','category'=>'tops'],
-    ['id'=>108,'name'=>'Cream Pointelle Knit Polo',   'price'=>270, 'img'=>'assets/tops/top8_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-20','condition'=>'fair',     'category'=>'tops'],
-    ['id'=>109,'name'=>'Rose Ribbon Velour Cardigan', 'price'=>300, 'img'=>'assets/tops/top9_A.png',  'badge'=>null,   'added_at'=>'2025-05-18','condition'=>'good',     'category'=>'tops'],
-    ['id'=>110,'name'=>'Coquette Rose Corset Top',    'price'=>330, 'img'=>'assets/tops/top10_A.png', 'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'tops'],
-    ['id'=>111,'name'=>'Milkmaid Chiffon Bustier',    'price'=>390, 'img'=>'assets/tops/top11_A.png', 'badge'=>null,   'added_at'=>'2025-05-15','condition'=>'good',     'category'=>'tops'],
-    ['id'=>112,'name'=>'Gilded Rose Satin Blouse',    'price'=>250, 'img'=>'assets/tops/top12_A.png', 'badge'=>null,   'added_at'=>'2025-05-10','condition'=>'good',     'category'=>'tops'],
+    ['id'=>101,'name'=>'Primrose Ribbed Baby Tee',    'price'=>320, 'img'=>'public/assets/tops/top1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'tops'],
+    ['id'=>102,'name'=>'Ivory Whisper Dress',         'price'=>240, 'img'=>'public/assets/tops/top2_A.png',  'badge'=>null,   'added_at'=>'2025-06-08','condition'=>'good',     'category'=>'tops'],
+    ['id'=>103,'name'=>'Mauve Bow-Lace Bodice',       'price'=>380, 'img'=>'public/assets/tops/top3_A.png',  'badge'=>null,   'added_at'=>'2025-06-05','condition'=>'good',     'category'=>'tops'],
+    ['id'=>104,'name'=>'Bluebell Reverie Dress',      'price'=>290, 'img'=>'public/assets/tops/top4_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-01','condition'=>'excellent','category'=>'tops'],
+    ['id'=>105,'name'=>'Sage Tie-Front Cardigan',     'price'=>410, 'img'=>'public/assets/tops/top5_A.png',  'badge'=>'New',  'added_at'=>'2025-06-12','condition'=>'excellent','category'=>'tops'],
+    ['id'=>106,'name'=>'Cornflower Blue Velour Crop', 'price'=>350, 'img'=>'public/assets/tops/top6_A.png',  'badge'=>null,   'added_at'=>'2025-05-28','condition'=>'good',     'category'=>'tops'],
+    ['id'=>107,'name'=>'Rosé Petaline Dress',         'price'=>460, 'img'=>'public/assets/tops/top7_A.png',  'badge'=>null,   'added_at'=>'2025-05-25','condition'=>'excellent','category'=>'tops'],
+    ['id'=>108,'name'=>'Cream Pointelle Knit Polo',   'price'=>270, 'img'=>'public/assets/tops/top8_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-20','condition'=>'fair',     'category'=>'tops'],
+    ['id'=>109,'name'=>'Emerald Corset Dress',        'price'=>300, 'img'=>'public/assets/tops/top9_A.png',  'badge'=>null,   'added_at'=>'2025-05-18','condition'=>'good',     'category'=>'tops'],
+    ['id'=>110,'name'=>'Rosé Satin Lace Dress',       'price'=>330, 'img'=>'public/assets/tops/top10_A.png', 'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'tops'],
+    ['id'=>111,'name'=>'Milkmaid Chiffon Bustier',    'price'=>390, 'img'=>'public/assets/tops/top11_A.png', 'badge'=>null,   'added_at'=>'2025-05-15','condition'=>'good',     'category'=>'tops'],
+    ['id'=>112,'name'=>'Midnight Bloom Dress',        'price'=>250, 'img'=>'public/assets/tops/top12_A.png', 'badge'=>null,   'added_at'=>'2025-05-10','condition'=>'good',     'category'=>'tops'],
 ];
 
-// ── Bottoms & Skirts ────────────────────────────────────────
+// ── Bottoms/Skirts ───────────────────────────────────────────
 $bottoms_products = [
-    ['id'=>201,'name'=>'Lorem Ipsum 1',               'price'=>450, 'img'=>'assets/bottoms/bottoms1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>202,'name'=>'Lorem Ipsum 2',               'price'=>380, 'img'=>'assets/bottoms/bottoms2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>203,'name'=>'Lorem Ipsum 3',               'price'=>290, 'img'=>'assets/bottoms/bottoms3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>204,'name'=>'Lorem Ipsum 4',               'price'=>520, 'img'=>'assets/bottoms/bottoms4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>205,'name'=>'Lorem Ipsum 5',               'price'=>340, 'img'=>'assets/bottoms/bottoms5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'bottoms'],
-    ['id'=>206,'name'=>'Lorem Ipsum 6',               'price'=>480, 'img'=>'assets/bottoms/bottoms6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>207,'name'=>'Lorem Ipsum 7',               'price'=>360, 'img'=>'assets/bottoms/bottoms7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>208,'name'=>'Lorem Ipsum 8',               'price'=>410, 'img'=>'assets/bottoms/bottoms8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>209,'name'=>'Lorem Ipsum 9',               'price'=>550, 'img'=>'assets/bottoms/bottoms9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>210,'name'=>'Lorem Ipsum 10',              'price'=>320, 'img'=>'assets/bottoms/bottoms10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>211,'name'=>'Lorem Ipsum 11',              'price'=>300, 'img'=>'assets/bottoms/bottoms11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'bottoms'],
-    ['id'=>212,'name'=>'Lorem Ipsum 12',              'price'=>490, 'img'=>'assets/bottoms/bottoms12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'bottoms'],
+    ['id'=>201,'name'=>'Lorem Ipsum 1',  'price'=>450, 'img'=>'public/assets/bottoms/bottoms1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'bottoms'],
+    ['id'=>202,'name'=>'Lorem Ipsum 2',  'price'=>380, 'img'=>'public/assets/bottoms/bottoms2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'bottoms'],
+    ['id'=>203,'name'=>'Lorem Ipsum 3',  'price'=>290, 'img'=>'public/assets/bottoms/bottoms3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'bottoms'],
+    ['id'=>204,'name'=>'Lorem Ipsum 4',  'price'=>520, 'img'=>'public/assets/bottoms/bottoms4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'bottoms'],
+    ['id'=>205,'name'=>'Lorem Ipsum 5',  'price'=>340, 'img'=>'public/assets/bottoms/bottoms5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'bottoms'],
+    ['id'=>206,'name'=>'Lorem Ipsum 6',  'price'=>480, 'img'=>'public/assets/bottoms/bottoms6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'bottoms'],
+    ['id'=>207,'name'=>'Lorem Ipsum 7',  'price'=>360, 'img'=>'public/assets/bottoms/bottoms7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'bottoms'],
+    ['id'=>208,'name'=>'Lorem Ipsum 8',  'price'=>410, 'img'=>'public/assets/bottoms/bottoms8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'bottoms'],
+    ['id'=>209,'name'=>'Lorem Ipsum 9',  'price'=>550, 'img'=>'public/assets/bottoms/bottoms9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'bottoms'],
+    ['id'=>210,'name'=>'Lorem Ipsum 10', 'price'=>320, 'img'=>'public/assets/bottoms/bottoms10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'bottoms'],
+    ['id'=>211,'name'=>'Lorem Ipsum 11', 'price'=>300, 'img'=>'public/assets/bottoms/bottoms11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'bottoms'],
+    ['id'=>212,'name'=>'Lorem Ipsum 12', 'price'=>490, 'img'=>'public/assets/bottoms/bottoms12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'bottoms'],
 ];
 
-// ── Dresses ─────────────────────────────────────────────────
-$dresses_products = [
-    ['id'=>301,'name'=>'Cottagecore Floral Midi Dress', 'price'=>680, 'img'=>'assets/dresses/dresses1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-15','condition'=>'excellent','category'=>'dresses'],
-    ['id'=>302,'name'=>'Wrap Sundress',                  'price'=>490, 'img'=>'assets/dresses/dresses2_A.png',  'badge'=>null,   'added_at'=>'2025-06-09','condition'=>'good',     'category'=>'dresses'],
-    ['id'=>303,'name'=>'Vintage Lace Slip Dress',        'price'=>750, 'img'=>'assets/dresses/dresses3_A.png',  'badge'=>null,   'added_at'=>'2025-06-06','condition'=>'excellent','category'=>'dresses'],
-    ['id'=>304,'name'=>'Smocked Boho Maxi Dress',        'price'=>580, 'img'=>'assets/dresses/dresses4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-12','condition'=>'excellent','category'=>'dresses'],
-    ['id'=>305,'name'=>'Babydoll Mini Dress',             'price'=>420, 'img'=>'assets/dresses/dresses5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-30','condition'=>'good',     'category'=>'dresses'],
-    ['id'=>306,'name'=>'Ruffled Tiered Dress',            'price'=>560, 'img'=>'assets/dresses/dresses6_A.png',  'badge'=>null,   'added_at'=>'2025-05-26','condition'=>'good',     'category'=>'dresses'],
-    ['id'=>307,'name'=>'Satin Slip Midi Dress',           'price'=>640, 'img'=>'assets/dresses/dresses7_A.png',  'badge'=>null,   'added_at'=>'2025-05-22','condition'=>'excellent','category'=>'dresses'],
-    ['id'=>308,'name'=>'Ditsy Print Shirt Dress',         'price'=>460, 'img'=>'assets/dresses/dresses8_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-17','condition'=>'fair',     'category'=>'dresses'],
-    ['id'=>309,'name'=>'Broderie Anglaise Midi Dress',    'price'=>720, 'img'=>'assets/dresses/dresses9_A.png',  'badge'=>null,   'added_at'=>'2025-05-13','condition'=>'excellent','category'=>'dresses'],
-    ['id'=>310,'name'=>'Off-Shoulder Floral Maxi',        'price'=>620, 'img'=>'assets/dresses/dresses10_A.png', 'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'good',     'category'=>'dresses'],
-    ['id'=>311,'name'=>'Backless Cami Dress',             'price'=>510, 'img'=>'assets/dresses/dresses11_A.png', 'badge'=>null,   'added_at'=>'2025-05-09','condition'=>'good',     'category'=>'dresses'],
-    ['id'=>312,'name'=>'Checkered Pinafore Dress',        'price'=>440, 'img'=>'assets/dresses/dresses12_A.png', 'badge'=>null,   'added_at'=>'2025-05-04','condition'=>'good',     'category'=>'dresses'],
+// ── Accessories ──────────────────────────────────────────────
+$accessories_products = [
+    ['id'=>301,'name'=>'Accessories 1',  'price'=>180, 'img'=>'public/assets/accessories/accessories1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'accessories'],
+    ['id'=>302,'name'=>'Accessories 2',  'price'=>120, 'img'=>'public/assets/accessories/accessories2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'accessories'],
+    ['id'=>303,'name'=>'Accessories 3',  'price'=>95,  'img'=>'public/assets/accessories/accessories3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'accessories'],
+    ['id'=>304,'name'=>'Accessories 4',  'price'=>220, 'img'=>'public/assets/accessories/accessories4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'accessories'],
+    ['id'=>305,'name'=>'Accessories 5',  'price'=>150, 'img'=>'public/assets/accessories/accessories5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'accessories'],
+    ['id'=>306,'name'=>'Accessories 6',  'price'=>175, 'img'=>'public/assets/accessories/accessories6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'accessories'],
+    ['id'=>307,'name'=>'Accessories 7',  'price'=>130, 'img'=>'public/assets/accessories/accessories7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'accessories'],
+    ['id'=>308,'name'=>'Accessories 8',  'price'=>200, 'img'=>'public/assets/accessories/accessories8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'accessories'],
+    ['id'=>309,'name'=>'Accessories 9',  'price'=>90,  'img'=>'public/assets/accessories/accessories9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'accessories'],
+    ['id'=>310,'name'=>'Accessories 10', 'price'=>160, 'img'=>'public/assets/accessories/accessories10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'accessories'],
+    ['id'=>311,'name'=>'Accessories 11', 'price'=>110, 'img'=>'public/assets/accessories/accessories11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'accessories'],
+    ['id'=>312,'name'=>'Accessories 12', 'price'=>195, 'img'=>'public/assets/accessories/accessories12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'accessories'],
 ];
 
-// ── Vintage Picks ────────────────────────────────────────────
-$vintage_products = [
-    ['id'=>401,'name'=>'70s Paisley Blouse',           'price'=>880,  'img'=>'assets/vintage/vintage1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-15','condition'=>'good',     'category'=>'vintage'],
-    ['id'=>402,'name'=>'80s Power Shoulder Blazer',    'price'=>1200, 'img'=>'assets/vintage/vintage2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'excellent','category'=>'vintage'],
-    ['id'=>403,'name'=>'90s Floral Slip Dress',        'price'=>950,  'img'=>'assets/vintage/vintage3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'vintage'],
-    ['id'=>404,'name'=>'Vintage Denim Jacket',         'price'=>1350, 'img'=>'assets/vintage/vintage4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'vintage'],
-    ['id'=>405,'name'=>'60s Mod Mini Dress',           'price'=>1100, 'img'=>'assets/vintage/vintage5_A.png',  'badge'=>null,   'added_at'=>'2025-06-03','condition'=>'good',     'category'=>'vintage'],
-    ['id'=>406,'name'=>'Retro Striped Knit Cardigan',  'price'=>780,  'img'=>'assets/vintage/vintage6_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-28','condition'=>'fair',     'category'=>'vintage'],
-    ['id'=>407,'name'=>'Boho Fringe Suede Vest',       'price'=>1050, 'img'=>'assets/vintage/vintage7_A.png',  'badge'=>null,   'added_at'=>'2025-05-23','condition'=>'good',     'category'=>'vintage'],
-    ['id'=>408,'name'=>'Victorian Lace Blouse',        'price'=>920,  'img'=>'assets/vintage/vintage8_A.png',  'badge'=>null,   'added_at'=>'2025-05-19','condition'=>'excellent','category'=>'vintage'],
-    ['id'=>409,'name'=>'90s Windbreaker Jacket',       'price'=>1180, 'img'=>'assets/vintage/vintage9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'vintage'],
-    ['id'=>410,'name'=>'70s High-Waist Flares',        'price'=>860,  'img'=>'assets/vintage/vintage10_A.png', 'badge'=>null,   'added_at'=>'2025-05-14','condition'=>'good',     'category'=>'vintage'],
-    ['id'=>411,'name'=>'Embroidered Hippie Tunic',     'price'=>740,  'img'=>'assets/vintage/vintage11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-10','condition'=>'fair',     'category'=>'vintage'],
-    ['id'=>412,'name'=>'Retro Plaid Wrap Skirt',       'price'=>810,  'img'=>'assets/vintage/vintage12_A.png', 'badge'=>null,   'added_at'=>'2025-05-06','condition'=>'good',     'category'=>'vintage'],
+// ── Bags ─────────────────────────────────────────────────────
+$bags_products = [
+    ['id'=>401,'name'=>'Bags 1',  'price'=>580, 'img'=>'public/assets/bags/bags1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'bags'],
+    ['id'=>402,'name'=>'Bags 2',  'price'=>420, 'img'=>'public/assets/bags/bags2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'bags'],
+    ['id'=>403,'name'=>'Bags 3',  'price'=>350, 'img'=>'public/assets/bags/bags3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'bags'],
+    ['id'=>404,'name'=>'Bags 4',  'price'=>720, 'img'=>'public/assets/bags/bags4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'bags'],
+    ['id'=>405,'name'=>'Bags 5',  'price'=>490, 'img'=>'public/assets/bags/bags5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'bags'],
+    ['id'=>406,'name'=>'Bags 6',  'price'=>610, 'img'=>'public/assets/bags/bags6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'bags'],
+    ['id'=>407,'name'=>'Bags 7',  'price'=>380, 'img'=>'public/assets/bags/bags7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'bags'],
+    ['id'=>408,'name'=>'Bags 8',  'price'=>540, 'img'=>'public/assets/bags/bags8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'bags'],
+    ['id'=>409,'name'=>'Bags 9',  'price'=>660, 'img'=>'public/assets/bags/bags9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'bags'],
+    ['id'=>410,'name'=>'Bags 10', 'price'=>310, 'img'=>'public/assets/bags/bags10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'bags'],
+    ['id'=>411,'name'=>'Bags 11', 'price'=>290, 'img'=>'public/assets/bags/bags11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'bags'],
+    ['id'=>412,'name'=>'Bags 12', 'price'=>750, 'img'=>'public/assets/bags/bags12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'bags'],
 ];
 
-// ── Select active dataset ────────────────────────────────────
+// ── Last Chance ──────────────────────────────────────────────
+$last_products = [
+    ['id'=>501,'name'=>'Last Chance 1',  'price'=>150, 'img'=>'public/assets/last/last1_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-01','condition'=>'fair',     'category'=>'last'],
+    ['id'=>502,'name'=>'Last Chance 2',  'price'=>120, 'img'=>'public/assets/last/last2_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-28','condition'=>'fair',     'category'=>'last'],
+    ['id'=>503,'name'=>'Last Chance 3',  'price'=>90,  'img'=>'public/assets/last/last3_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-25','condition'=>'good',     'category'=>'last'],
+    ['id'=>504,'name'=>'Last Chance 4',  'price'=>200, 'img'=>'public/assets/last/last4_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-22','condition'=>'fair',     'category'=>'last'],
+    ['id'=>505,'name'=>'Last Chance 5',  'price'=>180, 'img'=>'public/assets/last/last5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-19','condition'=>'good',     'category'=>'last'],
+    ['id'=>506,'name'=>'Last Chance 6',  'price'=>75,  'img'=>'public/assets/last/last6_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-16','condition'=>'fair',     'category'=>'last'],
+    ['id'=>507,'name'=>'Last Chance 7',  'price'=>230, 'img'=>'public/assets/last/last7_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-13','condition'=>'good',     'category'=>'last'],
+    ['id'=>508,'name'=>'Last Chance 8',  'price'=>110, 'img'=>'public/assets/last/last8_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-10','condition'=>'fair',     'category'=>'last'],
+    ['id'=>509,'name'=>'Last Chance 9',  'price'=>165, 'img'=>'public/assets/last/last9_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-07','condition'=>'good',     'category'=>'last'],
+    ['id'=>510,'name'=>'Last Chance 10', 'price'=>95,  'img'=>'public/assets/last/last10_A.png', 'badge'=>'Sale', 'added_at'=>'2025-04-04','condition'=>'fair',     'category'=>'last'],
+    ['id'=>511,'name'=>'Last Chance 11', 'price'=>140, 'img'=>'public/assets/last/last11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-04-01','condition'=>'fair',     'category'=>'last'],
+    ['id'=>512,'name'=>'Last Chance 12', 'price'=>85,  'img'=>'public/assets/last/last12_A.png', 'badge'=>'Sale', 'added_at'=>'2025-03-29','condition'=>'good',     'category'=>'last'],
+];
+
+// ── All products pool (reused for 'all' tab and 'new' filter) ─
+$all_products = array_merge(
+    $tops_products,
+    $bottoms_products,
+    $accessories_products,
+    $bags_products,
+    $last_products
+);
+
+// ── Select active dataset ─────────────────────────────────────
+// 'new' dynamically pulls every product with badge === 'New' across all categories
+// so you never need a separate $new_products array — just set badge='New' on any item
 $products = match ($active_cat) {
-    'tops'    => $tops_products,
-    'bottoms' => $bottoms_products,
-    'dresses' => $dresses_products,
-    'vintage' => $vintage_products,
-    default   => array_merge($tops_products, $bottoms_products, $dresses_products, $vintage_products),
+    'new'         => array_values(array_filter($all_products, fn($p) => $p['badge'] === 'New')),
+    'tops'        => $tops_products,
+    'bottoms'     => $bottoms_products,
+    'accessories' => $accessories_products,
+    'bags'        => $bags_products,
+    'last'        => $last_products,
+    default       => $all_products,
 };
 
 // ── Size options change per category ─────────────────────────
 $size_options = match ($active_cat) {
-    'bottoms' => ['XS','S','M','L','XL','XXL','24','26','28','30','32'],
-    'vintage' => ['XS','S','M','L','XL','One Size'],
-    default   => ['XS','S','M','L','XL','XXL'],
+    'bottoms'             => ['XS','S','M','L','XL','XXL','24','26','28','30','32'],
+    'bags'                => ['Mini','Small','Medium','Large'],
+    'accessories', 'last' => ['XS','S','M','L','XL','One Size'],
+    default               => ['XS','S','M','L','XL','XXL'],
 };
 
 // ── Apply filters ────────────────────────────────────────────
 $price_min         = isset($_GET['price_min']) && $_GET['price_min'] !== '' ? (int)$_GET['price_min'] : null;
 $price_max         = isset($_GET['price_max']) && $_GET['price_max'] !== '' ? (int)$_GET['price_max'] : null;
 $filter_conditions = (array)($_GET['condition'] ?? []);
-// Drop empty strings that can sneak in from cleared filters
 $filter_conditions = array_values(array_filter($filter_conditions, fn($v) => $v !== ''));
 
 if ($price_min !== null) {
@@ -158,7 +182,6 @@ function catalog_url(array $overrides = []): string {
         'sort' => $active_sort,
         'page' => $current_page_num,
     ], $overrides);
-    // remove blanks so cleared filters don't litter the URL
     $params = array_filter($params, fn($v) => $v !== '' && $v !== null);
     return '?' . http_build_query($params);
 }
@@ -176,7 +199,7 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="includes/header_view.css">
-    <link rel="stylesheet" href="css/pages/products_catalog_view.css">
+    <link rel="stylesheet" href="public/css/pages/products_catalog_view.css">
 </head>
 <body>
 
@@ -284,9 +307,9 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
             <?php else: ?>
             <div class="product-grid row g-4">
                 <?php foreach ($paged_products as $i => $product):
+                    // img paths are relative to public/ (e.g. assets/tops/top1_A.png)
+                    // FCPATH points to public/, so file_exists(FCPATH . $img_path) works correctly
                     $img_path   = $product['img'];
-                    // FCPATH = CodeIgniter constant — absolute path to public/
-                    // e.g. /var/www/html/thriftster/public/assets/tops/top1_A.png
                     $img_exists = !empty($img_path) && file_exists(FCPATH . $img_path);
                 ?>
                     <div class="col-6 col-md-4 col-lg-3 product-col"
@@ -298,19 +321,6 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                             <?php if ($product['badge']): ?>
                                 <span class="product-badge <?= strtolower($product['badge']) ?>">
                                     <?= htmlspecialchars($product['badge']) ?>
-                                </span>
-                            <?php endif; ?>
-
-                            <!-- Category pill — only shown on All Items tab -->
-                            <?php if ($active_cat === 'all'): ?>
-                                <span class="product-cat-pill cat-<?= $product['category'] ?>">
-                                    <?= match($product['category']) {
-                                        'tops'    => 'Tops',
-                                        'bottoms' => 'Bottoms',
-                                        'dresses' => 'Dresses',
-                                        'vintage' => 'Vintage',
-                                        default   => ucfirst($product['category'])
-                                    } ?>
                                 </span>
                             <?php endif; ?>
 
