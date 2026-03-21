@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login — Thriftster</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<?= base_url('css/includes/auth.css') ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('public/css/includes/auth.css') ?>">
 </head>
 <body>
 
 <div class="left-panel">
     <div class="brand">
-        <div class="brand-icon">👕</div>
+        <div class="brand-icon">🎀</div>
         <span class="brand-name">Thriftster</span>
     </div>
 
     <div class="left-content">
         <h1>Find your <em>next</em> favorite piece.</h1>
-        <p>Pre-loved fashion, curated with care. Sustainable style for everyone.</p>
+        <p>Because your wardrobe should feel like a love letter to yourself.</p>
     </div>
 
     <div class="tags">

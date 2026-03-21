@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register — Thriftster</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="<?= base_url('css/includes/auth.css') ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('public/css/includes/auth.css') ?>">
 </head>
 <body>
 
 <div class="left-panel">
     <div class="brand">
-        <div class="brand-icon">👕</div>
+        <div class="brand-icon">🎀</div>
         <span class="brand-name">Thriftster</span>
     </div>
 
@@ -22,11 +22,11 @@
 
     <div class="perks">
         <div class="perk">
-            <div class="perk-icon">🛍️</div>
+            <div class="perk-icon">🌸</div>
             <span>Buy & sell pre-loved fashion</span>
         </div>
         <div class="perk">
-            <div class="perk-icon">♻️</div>
+            <div class="perk-icon">🌿</div>
             <span>Shop sustainably & save money</span>
         </div>
         <div class="perk">

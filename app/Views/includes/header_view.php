@@ -9,7 +9,7 @@
 $cart_count = isset($_SESSION['cart_count']) ? (int)$_SESSION['cart_count'] : 0;
 
 // Active nav detection
-$current_page = basename($_SERVER['PHP_SELF'], '.php');
+$current_uri = uri_string();
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Custom Header CSS -->
-    <link rel="stylesheet" href="css/includes/header_view.css">
+    <link rel="stylesheet" href="public/css/includes/header_view.css">
 </head>
 <body>
 
@@ -38,7 +38,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
     <div class="header-inner container-fluid px-3 px-md-4">
 
         <!-- ── LEFT: Logo ── -->
-        <a href="index.php" class="logo-link" aria-label="Go to homepage">
+        <a href="<?= base_url('/') ?>" class="logo-link" aria-label="Go to homepage">
             <div class="logo-badge">
                 <img src="assets/header/logo.png"
                      alt="Logo"
@@ -53,7 +53,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         </a>
 
         <!-- ── CENTER: Search Bar ── -->
-        <form class="search-form" action="search.php" method="GET" role="search">
+        <form class="search-form" action="<?= base_url('/search') ?>" method="GET" role="search">
             <div class="search-wrapper">
                 <input
                     type="search"
@@ -75,8 +75,8 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
 
             <!-- Product Catalog -->
             <div class="nav-item-wrap">
-                <a href="products_catalog_view"
-                   class="nav-link-custom <?= $current_page === 'catalog' ? 'active' : '' ?>">
+                <a href="<?= base_url('/products_catalog_view') ?>"
+                   class="nav-link-custom <?= $current_uri === 'products_catalog_view' ? 'active' : '' ?>">
                     <span>Product Catalog</span>
                 </a>
             </div>
@@ -84,7 +84,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             <!-- Login / Register -->
             <div class="nav-item-wrap dropdown">
                 <a href="#"
-                   class="nav-link-custom <?= in_array($current_page, ['login','register','account']) ? 'active' : '' ?>"
+                   class="nav-link-custom <?= in_array($current_uri, ['auth/login','auth/register','account']) ? 'active' : '' ?>"
                    id="authDropdown"
                    data-bs-toggle="dropdown"
                    aria-expanded="false">
@@ -100,24 +100,24 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
                 </a>
                 <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-end" aria-labelledby="authDropdown">
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <li><a class="dropdown-item-custom" href="account.php">
+                        <li><a class="dropdown-item-custom" href="<?= base_url('/account') ?>">
                             <i class="bi bi-person-circle"></i> My Account
                         </a></li>
-                        <li><a class="dropdown-item-custom" href="orders.php">
+                        <li><a class="dropdown-item-custom" href="<?= base_url('/orders') ?>">
                             <i class="bi bi-bag-check"></i> My Orders
                         </a></li>
-                        <li><a class="dropdown-item-custom" href="wishlist.php">
+                        <li><a class="dropdown-item-custom" href="<?= base_url('/wishlist') ?>">
                             <i class="bi bi-heart"></i> Wishlist
                         </a></li>
                         <li><hr class="dropdown-divider-custom"></li>
-                        <li><a class="dropdown-item-custom logout" href="logout.php">
+                        <li><a class="dropdown-item-custom logout" href="<?= base_url('/auth/logout') ?>">
                             <i class="bi bi-box-arrow-right"></i> Sign Out
                         </a></li>
                     <?php else: ?>
-                        <li><a class="dropdown-item-custom" href="login.php">
+                        <li><a class="dropdown-item-custom" href="<?= base_url('/auth/login') ?>">
                             <i class="bi bi-box-arrow-in-right"></i> Login
                         </a></li>
-                        <li><a class="dropdown-item-custom" href="register.php">
+                        <li><a class="dropdown-item-custom" href="<?= base_url('/auth/register') ?>">
                             <i class="bi bi-person-plus"></i> Create Account
                         </a></li>
                     <?php endif; ?>
@@ -125,7 +125,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             </div>
 
             <!-- Cart Icon -->
-            <a href="cart.php" class="cart-btn <?= $current_page === 'cart' ? 'active' : '' ?>" aria-label="View cart">
+            <a href="<?= base_url('/cart') ?>" class="cart-btn <?= $current_uri === 'cart' ? 'active' : '' ?>" aria-label="View cart">
                 <div class="cart-icon-wrap">
                     <i class="bi bi-bag"></i>
                     <?php if ($cart_count > 0): ?>
@@ -138,9 +138,4 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
 
     </div>
 </header>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+

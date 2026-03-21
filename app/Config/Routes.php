@@ -11,3 +11,8 @@ $routes->match(['get', 'post'], '/auth/register', 'Auth::register');
 $routes->match(['get', 'post'], '/auth/login', 'Auth::login');
 $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/search', 'Search::index');
+$routes->get('/account', 'Account::index');
+$routes->get('/orders', 'Orders::index');
+$routes->get('/wishlist', 'Wishlist::index');
+$routes->get('/cart', 'Cart::index');
