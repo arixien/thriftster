@@ -16,3 +16,4 @@ $routes->get('/account', 'Account::index');
 $routes->get('/orders', 'Orders::index');
 $routes->get('/wishlist', 'Wishlist::index');
 $routes->get('/cart', 'Cart::index');
+$routes->get('/admin_dashboard', 'Dashboard::index');
