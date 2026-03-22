@@ -50,7 +50,7 @@ class Auth extends BaseController
             if ($user['role'] === 'admin') {
                 return redirect()->to('/admin_dashboard');
             } else {
-                 return redirect()->to('/products_catalog_view');
+                 return redirect()->to('/profile');
             }
 
         } else {
