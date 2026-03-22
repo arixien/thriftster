@@ -22,6 +22,7 @@ class Auth extends BaseController
                     'username' => $this->request->getPost('username'),
                     'email'    => $this->request->getPost('email'),
                     'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                    'role'     => 'user'
                 ]);
                 return redirect()->to('/auth/login');
             } else {
@@ -49,7 +50,7 @@ class Auth extends BaseController
             if ($user['role'] === 'admin') {
                 return redirect()->to('/admin_dashboard');
             } else {
-                return redirect()->to('/dashboard');
+                 return redirect()->to('/products_catalog_view');
             }
 
         } else {
