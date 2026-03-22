@@ -32,25 +32,33 @@ class Auth extends BaseController
         return view('register', $data);
     }
 
-    public function login()
-    {
-        helper(['form']);
-        $data = [];
+   public function login()
+{
+    helper(['form']);
+    $data = [];
 
-        if ($this->request->is('post')) {
-            $model = new UserModel();
-            $user = $model->where('username', $this->request->getPost('username'))->first();
+    if ($this->request->is('post')) {
+        $model = new UserModel();
+        $user = $model->where('username', $this->request->getPost('username'))->first();
 
-            if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
-                session()->set('username', $user['username']);
-                return redirect()->to('/dashboard');
+        if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+            session()->set('username', $user['username']);
+            session()->set('role', $user['role']); // 👈 save the role
+
+            // 👇 redirect based on role
+            if ($user['role'] === 'admin') {
+                return redirect()->to('/admin_dashboard');
             } else {
-                $data['error'] = 'Invalid username or password';
+                return redirect()->to('/dashboard');
             }
-        }
 
-        return view('login', $data);
+        } else {
+            $data['error'] = 'Invalid username or password';
+        }
     }
+
+    return view('login', $data);
+}
 
     public function logout()
     {

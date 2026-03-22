@@ -29,8 +29,8 @@ $current_uri = uri_string();
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Custom Header CSS -->
-    <link rel="stylesheet" href="/thriftster/public/css/includes/admin_header_view.css">
-    <link rel="stylesheet" href="/thriftster/public/css/pages/admin_dashboard.css">
+   <link rel="stylesheet" href="<?= base_url('public/css/includes/admin_header_view.css') ?>">
+<link rel="stylesheet" href="<?= base_url('public/css/pages/admin_dashboard.css') ?>">
 </head>
 <body>
 
@@ -79,8 +79,8 @@ $current_uri = uri_string();
 
             <!-- Logout -->
             <div class="nav-item-wrap">
-                <a href="<?= base_url('/logout') ?>"
-                   class="nav-link-custom logout-nav-btn <?= $current_uri === 'logout' ? 'active' : '' ?>">
+                <a href="<?= base_url('auth/logout') ?>"
+     class="nav-link-custom logout-nav-btn <?= $current_uri === 'logout' ? 'active' : '' ?>">
                     <span>Logout</span>
                 </a>
             </div>
