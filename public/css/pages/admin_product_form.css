@@ -1,0 +1,149 @@
+.page-title {
+    margin-bottom: 2rem;
+}
+
+.page-title h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.form-panel {
+    background-color: #fff;
+    border: 4px solid var(--text-dark);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    box-shadow: 6px 6px 0px rgba(74, 60, 65, 0.1);
+    max-width: 900px;
+    margin: 0 auto 3rem;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    border: 3px solid var(--text-dark);
+    border-radius: 30px; /* extremely rounded inputs based on wireframe */
+    background-color: #fff;
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.3s;
+    appearance: none;
+}
+
+.form-control-custom:focus {
+    border-color: var(--coquette-primary);
+    box-shadow: 0 0 0 4px rgba(230, 167, 178, 0.2);
+}
+
+/* Custom Select Dropdown matching wireframe */
+.select-wrapper {
+    position: relative;
+}
+
+.custom-arrow {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    pointer-events: none;
+    color: var(--text-dark);
+}
+
+/* Image Upload Area */
+.image-upload-area {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.upload-placeholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 3px dashed var(--text-dark);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #faf5f6;
+    transition: all 0.3s;
+    z-index: 1;
+}
+
+.upload-placeholder span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--text-mid, #6b4f55);
+}
+
+.file-input:hover + .upload-placeholder {
+    background-color: rgba(230, 167, 178, 0.1);
+    border-color: var(--coquette-primary);
+}
+
+/* Actions */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.btn-primary-custom, .btn-secondary-custom {
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    border: 4px solid var(--text-dark);
+    border-radius: 12px;
+    background-color: #fff;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 200px;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--coquette-primary);
+    border-color: var(--coquette-primary);
+    color: #fff;
+}
+
+.btn-secondary-custom:hover {
+    background-color: var(--text-dark);
+    color: #fff;
+}
