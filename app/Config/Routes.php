@@ -22,3 +22,4 @@ $routes->get('/admin/products/add', 'AdminProducts::add');
 $routes->get('/admin/products/edit', 'AdminProducts::edit');
 $routes->get('/admin/orders', 'AdminOrders::index');
 $routes->get('/admin/orders/view', 'AdminOrders::view');
+$routes->get('profile', 'Profile::index');
