@@ -8,20 +8,116 @@
     font-weight: 700;
 }
 
+/* ── Orders Panel ── */
 .orders-panel {
     background-color: #fff;
-    border: 3px solid var(--text-dark);
+    border: 4px solid var(--text-dark);
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 2rem;
     box-shadow: 6px 6px 0px rgba(74, 60, 65, 0.1);
+}
+
+/* ── Panel Header with Search ── */
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .orders-panel .panel-header h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.4rem;
-    margin-bottom: 1.5rem;
+    margin: 0;
 }
 
+/* ── Search Bar ── */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 3px solid var(--text-dark);
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    background: #faf5f6;
+    transition: all 0.3s;
+    min-width: 280px;
+}
+
+.search-wrapper:focus-within {
+    border-color: var(--coquette-primary);
+    box-shadow: 0 0 0 4px rgba(230, 167, 178, 0.2);
+    background: #fff;
+}
+
+.search-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    width: 100%;
+}
+
+.search-input::placeholder {
+    color: #b89fa5;
+}
+
+/* ── Scrollable Table Container ── */
+.table-container {
+    max-height: 420px;
+    overflow-y: auto;
+    border: 2px solid var(--text-dark);
+    border-radius: 10px;
+}
+
+/* Sticky header while scrolling */
+.table-container thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+    border-bottom: 2px solid var(--text-dark);
+}
+
+/* ── Status Badges ── */
+.status-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+}
+
+.status-badge.pending {
+    background-color: #fff8e1;
+    color: #b8860b;
+    border-color: #f0d060;
+}
+
+.status-badge.complete {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-color: #a5d6a7;
+}
+
+.status-badge.cancelled {
+    background-color: #fce4ec;
+    color: #c62828;
+    border-color: #ef9a9a;
+}
+
+/* ── Action Links ── */
 .action-link {
     color: var(--text-dark);
     text-decoration: underline;
@@ -34,93 +130,14 @@
     color: var(--coquette-primary);
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-.pagination a {
-    text-decoration: none;
+.action-divider {
+    margin: 0 0.4rem;
     color: var(--text-dark);
-    transition: color 0.3s;
+    font-weight: 500;
 }
-
-.pagination a:hover, .pagination .active {
-    color: var(--coquette-primary);
-}
-
-
-/* --- VIEW ORDER SPECIFIC STYLES --- */
-
-.order-view-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.order-id-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.btn-back {
-    display: inline-block;
-    padding: 0.6rem 2.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-decoration: none;
-    border: 3px solid var(--text-dark);
-    border-radius: 12px;
-    background-color: #fff;
-    color: var(--text-dark);
-    transition: all 0.3s;
-}
-
-.btn-back:hover {
-    background-color: var(--text-dark);
-    color: #fff;
-}
-
-.order-details-section {
-    margin-bottom: 3rem;
-}
-
-.details-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.details-column p {
-    margin: 0.4rem 0;
-    color: #333;
-}
-
-.details-column strong {
-    color: var(--text-dark);
-    font-weight: 700;
-}
-
-.order-items-table {
-    margin-top: 2rem;
+.table-container {
+    max-height: 200px; /* lower this to test */
+    overflow-y: auto;
+    border: 2px solid var(--text-dark);
+    border-radius: 10px;
 }
