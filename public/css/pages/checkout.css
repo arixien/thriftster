@@ -1,0 +1,300 @@
+/* ============================================================
+   products_catalog_view.css — Thrift Store Product Catalog
+   Shares CSS variables with header_view.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap');
+
+/* ── CSS Variables (mirror header) ─────────────────────────── */
+:root {
+    --clr-rose:        #E6A7B2;
+    --clr-blush:       #E2B4B8;
+    --clr-taupe:       #D2C4BC;
+    --clr-lilac:       #E0CCD8;
+    --clr-pale:        #EDCED4;
+    --clr-rose-dark:   #c97d8e;
+    --clr-rose-deeper: #a85d6e;
+    --clr-bg-header:   #fdf6f7;
+    --clr-bg-page:     #faf5f6;
+    --clr-text-dark:   #3a2d30;
+    --clr-text-mid:    #6b4f55;
+    --clr-text-light:  #9e7880;
+    --clr-border:      #e8d4d8;
+    --clr-white:       #ffffff;
+
+    --font-title: 'Cinzel', serif;
+    --font-sub:   'Crimson Pro', Georgia, serif;
+    --font-body:  'Poppins', 'Roboto', sans-serif;
+
+    --radius-pill: 999px;
+    --radius-md:   10px;
+    --radius-sm:   6px;
+    --radius-card: 12px;
+
+    --shadow-card:       0 2px 12px rgba(180, 110, 130, 0.10), 0 1px 3px rgba(58, 45, 48, 0.06);
+    --shadow-card-hover: 0 8px 28px rgba(180, 110, 130, 0.18), 0 2px 8px rgba(58, 45, 48, 0.08);
+    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ── Page Base ──────────────────────────────────────────────── */
+body {
+    background: var(--clr-bg-page);
+    font-family: var(--font-body);
+    color: var(--clr-text-dark);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CHECKOUT
+   ══════════════════════════════════════════════════════════════ */
+
+.checkout-main {
+    padding: 2rem 0;
+    min-height: 100vh;
+    background: var(--clr-bg-page);
+}
+
+.checkout-title {
+    font-family: var(--font-title);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--clr-text-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* CARD */
+.checkout-card {
+    background: var(--clr-white);
+    border: 0.5px solid var(--clr-border);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-card);
+}
+
+.checkout-section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--clr-text-dark);
+    margin-bottom: 1rem;
+    font-family: var(--font-sub);
+}
+
+.checkout-section-title-2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--clr-text-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-sub);
+}
+
+/* INPUTS */
+.checkout-label {
+    font-size: 13px;
+    color: var(--clr-text-light);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.checkout-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 0.5px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: var(--font-body);
+}
+
+/* OPTIONS */
+.checkout-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid #f0e4e8;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--clr-text-dark);
+    font-family: var(--font-body);
+}
+
+/* SUMMARY ITEMS */
+.checkout-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.checkout-item-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkout-item-img {
+    width: 40px;
+    height: 40px;
+    background: #f5ecee;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.checkout-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.checkout-item-name {
+    margin: 0;
+    color: var(--clr-text-dark);
+    font-weight: 500;
+}
+
+.checkout-item-qty {
+    margin: 0;
+    color: var(--clr-text-light);
+    font-size: 12px;
+}
+
+.checkout-item-price {
+    font-weight: 500;
+    color: var(--clr-text-dark);
+}
+
+/* STICKY SUMMARY */
+/* Summary */
+.checkout-summary {
+    background: var(--clr-white);
+    border: 0.5px solid var(--clr-border);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+}
+
+/* ✅ Sticky fix */
+.sticky-summary {
+    position: sticky;
+    top: 90px;
+    align-self: flex-start;
+}
+
+/* Summary items */
+.summary-img {
+    width: 40px;
+    height: 40px;
+    background: #f5ecee;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.summary-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.summary-name {
+    margin: 0;
+    font-weight: 500;
+}
+
+.summary-price {
+    font-weight: 500;
+}
+
+.summary-divider {
+    border-color: var(--clr-border);
+    margin: 1rem 0;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: var(--clr-text-light);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--clr-text-dark);
+}
+
+.sticky-summary {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5rem;
+    align-self: flex-start;
+    background: var(--clr-white);
+    border: 0.5px solid var(--clr-border);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+    z-index: 10;
+}
+
+/* Summary Title in Checkout */
+.summary-title {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--clr-text-dark);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.03em;
+}
+
+/* Redefine button to match your previous cart style if needed */
+.btn-place-order, .btn-checkout {
+    width: 100%;
+    display: block;
+    text-align: center;
+    background: var(--clr-rose);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 0.975rem;
+    color: #4B1528;
+    text-decoration: none;
+    border: none;
+    transition: all 150ms ease;
+    cursor: pointer;
+}
+
+.btn-place-order:hover {
+    background: var(--clr-rose-dark);
+    color: var(--clr-white);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+    .catalog-main          { padding: 24px 0 48px; }
+    .catalog-container     { padding: 0 14px; }
+    .filter-bar            { padding: 5px 10px 5px 5px; gap: 8px; }
+    .filter-tab            { padding: 7px 12px; font-size: 0.82rem; }
+    .catalog-title         { font-size: 1.3rem; }
+    .product-info          { padding: 10px 12px 11px; }
+    .product-name          { font-size: 0.82rem; }
+    .product-price         { font-size: 0.78rem; }
+    .page-btn              { min-width: 34px; height: 34px; font-size: 0.82rem; }
+    .sort-label-text       { display: none !important; }
+}
+
+@media (max-width: 480px) {
+    .filter-tabs           { gap: 1px; }
+    .filter-tab            { padding: 6px 10px; font-size: 0.78rem; }
+    .catalog-title-row     { margin-bottom: 18px; }
+    .catalog-count         { display: none; }
+    .filter-panel          { width: 88vw !important; }
+}
