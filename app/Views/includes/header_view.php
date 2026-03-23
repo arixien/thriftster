@@ -13,6 +13,8 @@ $current_uri = uri_string();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('public/css/includes/header_view.css') ?>">
+   
+
 </head>
 <body>
 
@@ -82,10 +84,7 @@ $current_uri = uri_string();
                         </a></li>
                         <li><a class="dropdown-item-custom" href="<?= base_url('/orders') ?>">
                             <i class="bi bi-bag-check"></i> My Orders
-                        </a></li>
-                        <li><a class="dropdown-item-custom" href="<?= base_url('/wishlist') ?>">
-                            <i class="bi bi-heart"></i> Wishlist
-                        </a></li>
+                        </a></li></li>
                         <li><hr class="dropdown-divider-custom"></li>
                         <li><a class="dropdown-item-custom logout" href="<?= base_url('/auth/logout') ?>">
                             <i class="bi bi-box-arrow-right"></i> Sign Out
