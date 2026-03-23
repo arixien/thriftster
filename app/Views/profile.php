@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile — Thriftster</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="<?= base_url('public/css/pages/profile.css') ?>">
-</head>
-<body>
-
-<!-- Navbar -->
-<nav class="navbar">
-    <div class="brand">
-        <div class="brand-icon">🎀</div>
-        <span class="brand-name">Thriftster</span>
-    </div>
-    <div class="nav-links">
-        <a href="/shop">Shop</a>
-        <a href="/sell">Sell</a>
-        <a href="/profile" class="active">Profile</a>
-        <a href="/auth/logout" class="logout-btn">Log out</a>
-    </div>
-</nav>
+<?= view('includes/header_view') ?>
 
 <!-- Profile -->
 <div class="profile-wrapper">
@@ -71,5 +48,6 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
