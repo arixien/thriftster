@@ -1,5 +1,5 @@
 <?= view('includes/header_view') ?>
-
+<link rel="stylesheet" href="<?= base_url('public/css/pages/profile.css') ?>">
 <!-- Profile -->
 <div class="profile-wrapper">
 
@@ -10,13 +10,19 @@
     <div class="profile-card">
 
         <div class="profile-banner"></div>
-
-        <div class="profile-head">
-            <div class="avatar">
-                <?= strtoupper(substr($user['first_name'] ?? $user['username'] ?? '?', 0, 1)) ?>
-            </div>
-            <a href="/profile/edit" class="edit-btn">Edit Profile</a>
-        </div>
+<div class="profile-head">
+<div class="avatar">
+    <?php if (!empty($user['profile_picture'])): ?>
+        <img src="<?= base_url('public/uploads/profiles/' . $user['profile_picture']) ?>" alt="Profile Picture">
+    <?php else: ?>
+        <?= strtoupper(substr($user['first_name'] ?? $user['username'] ?? '?', 0, 1)) ?>
+    <?php endif; ?>
+</div>
+    <div class="profile-head-actions">
+        <a href="<?= base_url('account') ?>" class="edit-btn">My Account</a>
+        <a href="/profile/edit" class="edit-btn">Edit Profile</a>
+    </div>
+</div>
 
         <div class="profile-body">
             <h1 class="profile-name">
