@@ -230,7 +230,7 @@ body {
     text-align: center;
     background: var(--clr-rose);
     padding: 12px;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill);
     font-family: var(--font-sub);
     font-weight: 700;
     font-size: 0.975rem;
@@ -247,13 +247,24 @@ body {
 }
 
 .btn-continue {
-    font-family: var(--font-body);
+    font-family: var(--font-sub);
+    border-radius: var(--radius-pill);
+    background-color: var(--clr-white);
+    border: 1.5px solid var(--clr-border);
+    border-color: var(--clr-rose);
+    outline: none;
     display: block;
     text-align: center;
     margin-top: 10px;
-    font-size: 13px;
+    padding: 12px;
+    font-size: 0.975rem;
     color: var(--clr-text-light);
     text-decoration: none;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.btn-continue:hover {
+    background-color: #f5ecee;
 }
 
 
