@@ -1,0 +1,72 @@
+#page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #fdf6f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.loader-logo {
+    font-size: 3rem;
+    animation: bowSwing 1.2s ease-in-out infinite;
+}
+
+@keyframes bowSwing {
+    0%, 100% { transform: rotate(-10deg); }
+    50%       { transform: rotate(10deg); }
+}
+
+.loader-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4A3C41;
+    letter-spacing: 0.1em;
+}
+
+.petals-wrap {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.petal {
+    position: absolute;
+    top: -60px;
+    font-size: 1.4rem;
+    animation: petalFall linear infinite;
+    opacity: 0.85;
+}
+
+@keyframes petalFall {
+    0%   { transform: translateY(0) rotate(0deg);    opacity: 0.85; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+.petal:nth-child(1) { left: 10%;  animation-duration: 2.5s; animation-delay: 0s;   font-size: 1.2rem; }
+.petal:nth-child(2) { left: 22%;  animation-duration: 3s;   animation-delay: 0.3s; font-size: 1.6rem; }
+.petal:nth-child(3) { left: 35%;  animation-duration: 2.8s; animation-delay: 0.6s; font-size: 1rem;   }
+.petal:nth-child(4) { left: 48%;  animation-duration: 3.2s; animation-delay: 0.1s; font-size: 1.5rem; }
+.petal:nth-child(5) { left: 60%;  animation-duration: 2.6s; animation-delay: 0.8s; font-size: 1.1rem; }
+.petal:nth-child(6) { left: 72%;  animation-duration: 3.1s; animation-delay: 0.4s; font-size: 1.4rem; }
+.petal:nth-child(7) { left: 83%;  animation-duration: 2.7s; animation-delay: 0.9s; font-size: 1.2rem; }
+.petal:nth-child(8) { left: 92%;  animation-duration: 2.9s; animation-delay: 0.5s; font-size: 1.3rem; }
