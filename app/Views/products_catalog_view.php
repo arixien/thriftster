@@ -196,13 +196,12 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="includes/header_view.css">
-    <link rel="stylesheet" href="public/css/pages/products_catalog_view.css">
+   <link rel="stylesheet" href="<?= base_url('public/css/includes/header_view.css') ?>">
+<link rel="stylesheet" href="<?= base_url('public/css/pages/products_catalog_view.css') ?>">
 </head>
 <body>
 
-    <?php include 'includes/header_view.php'; ?>
-
+<?= view('includes/header_view') ?>
     <main class="catalog-main">
         <div class="container-fluid catalog-container">
 
