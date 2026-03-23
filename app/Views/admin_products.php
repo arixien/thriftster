@@ -1,7 +1,5 @@
 <?= view('includes/admin_header_view') ?>
-    <!-- Reusing the dashboard CSS for the shared components like buttons and table structures -->
-    <link rel="stylesheet" href="/thriftster/public/css/pages/admin_products.css">
-    
+<link rel="stylesheet" href="<?= base_url('public/css/pages/admin_products.css') ?>">    
     <main class="dashboard-container">
         <!-- Page Title -->
         <div class="page-title">
@@ -24,71 +22,50 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><div class="img-placeholder-large"></div></td>
-                            <td>Lorem</td>
-                            <td>Lorem</td>
-                            <td>P123.45</td>
-                            <td>123</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/products/edit') ?>" class="action-link">Edit</a> 
-                                <span class="action-divider">|</span> 
-                                <a href="#" class="action-link">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><div class="img-placeholder-large"></div></td>
-                            <td>Lorem</td>
-                            <td>Lorem</td>
-                            <td>P123.45</td>
-                            <td>123</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/products/edit') ?>" class="action-link">Edit</a> 
-                                <span class="action-divider">|</span> 
-                                <a href="#" class="action-link">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><div class="img-placeholder-large"></div></td>
-                            <td>Lorem</td>
-                            <td>Lorem</td>
-                            <td>P123.45</td>
-                            <td>123</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/products/edit') ?>" class="action-link">Edit</a> 
-                                <span class="action-divider">|</span> 
-                                <a href="#" class="action-link">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><div class="img-placeholder-large"></div></td>
-                            <td>Lorem</td>
-                            <td>Lorem</td>
-                            <td>P123.45</td>
-                            <td>123</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/products/edit') ?>" class="action-link">Edit</a> 
-                                <span class="action-divider">|</span> 
-                                <a href="#" class="action-link">Delete</a>
-                            </td>
-                        </tr>
+                        <?php if (!empty($all_products)): ?>
+                            <?php foreach ($all_products as $product): ?>
+                            <tr>
+                                <td>
+                                    <?php if (!empty($product['img']) && file_exists(FCPATH . $product['img'])): ?>
+                                        <img src="<?= base_url($product['img']) ?>" 
+                                             alt="<?= esc($product['name']) ?>"
+                                             style="width:60px; height:60px; object-fit:cover; border-radius:6px;">
+                                    <?php else: ?>
+                                        <div class="img-placeholder-large"></div>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= esc($product['name']) ?></td>
+                                <td><?= esc($product['category']) ?></td>
+                                <td>₱<?= number_format($product['price'], 2) ?></td>
+                                <td><?= esc($product['stock']) ?></td>
+                                <td><?= esc($product['status']) ?></td>
+                                <td class="actions-cell">
+                                    <a href="<?= base_url('/admin/products/edit/' . $product['id']) ?>" class="action-link">Edit</a> 
+                                    <span class="action-divider">|</span> 
+                                    <a href="<?= base_url('/admin/products/delete/' . $product['id']) ?>" 
+                                       class="action-link"
+                                       onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" style="text-align:center; padding: 2rem;">
+                                    No products found.
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
             
             <!-- Pagination -->
-            <div class="pagination">
-                <a href="#" class="page-arrow">&lt;</a>
-                <a href="#" class="page-num active">1</a>
-                <a href="#" class="page-num">2</a>
-                <span class="page-dots">...</span>
-                <a href="#" class="page-num">5</a>
-                <a href="#" class="page-arrow">&gt;</a>
-            </div>
+
         </div>
     </main>
 </body>

@@ -15,7 +15,11 @@ $categories = [
 ];
 
 $products = match ($active_cat) {
-   'new'         => array_values(array_filter($all_products, fn($p) => ($p['badge'] ?? '') === 'New')),
+   'new' => array_slice(
+    array_values(
+        array_filter($all_products, fn($p) => !empty($p['created_at']))
+    ), 0, 12
+),
     'tops'        => array_values(array_filter($all_products, fn($p) => $p['category'] === 'tops')),
     'bottoms'     => array_values(array_filter($all_products, fn($p) => $p['category'] === 'bottoms')),
     'accessories' => array_values(array_filter($all_products, fn($p) => $p['category'] === 'accessories')),
@@ -216,7 +220,7 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                         <article class="product-card">
 
                             <!-- Badge (New / Sale) -->
-                        <?php if (!empty($product['badge'])): ?>
+                    <?php if (!empty($product['badge']) && $active_cat === 'new'): ?>
     <span class="product-badge <?= strtolower($product['badge']) ?>">
         <?= htmlspecialchars($product['badge']) ?>
     </span>
@@ -261,10 +265,15 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                                         </span>
                                     </div>
                                 </div>
-                                <button class="add-to-cart-btn" aria-label="Add to cart"
-                                        data-product-id="<?= $product['id'] ?>">
-                                    <i class="bi bi-bag-plus"></i>
-                                </button>
+                            <form action="<?= base_url('/cart/add') ?>" method="POST" style="display:inline;">
+    <?= csrf_field() ?>
+    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+    <input type="hidden" name="quantity" value="1">
+    <button type="submit" class="add-to-cart-btn" aria-label="Add to cart"
+            data-product-id="<?= $product['id'] ?>">
+        <i class="bi bi-bag-plus"></i>
+    </button>
+</form>
                             </div>
 
                         </article>
@@ -400,9 +409,9 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     /* ── Add to Cart feedback ── */
+    
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', function () {
             const icon = this.querySelector('i');
@@ -415,6 +424,7 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
         });
     });
     </script>
+<?= view('includes/footer_view') ?>
 
 </body>
 </html>
