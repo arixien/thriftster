@@ -43,8 +43,10 @@ class Auth extends BaseController
         $user = $model->where('username', $this->request->getPost('username'))->first();
 
         if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
-            session()->set('username', $user['username']);
-            session()->set('role', $user['role']); // 👈 save the role
+          session()->set('user_id',   $user['id']);
+        session()->set('user_name', $user['username']);
+        session()->set('username',  $user['username']);
+        session()->set('role',      $user['role']);
 
             // 👇 redirect based on role
             if ($user['role'] === 'admin') {
