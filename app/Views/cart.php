@@ -22,94 +22,81 @@ if (!empty($cart)) {
 }
 ?>
 
-<main style="padding:2rem 0;background:#faf5f6;min-height:100vh;">
-<div class="container">
+<link rel="stylesheet" href="<?= base_url('public/css/pages/cart.css') ?>">
 
-  <h1 style="font-size:22px;font-weight:600;color:#3a2d30;margin-bottom:1.5rem;">My Cart</h1>
+<main class="cart-main">
+    <div class="container">
+        <h1 class="cart-title">My Cart</h1>
 
-  <?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-  <?php endif; ?>
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+        <?php endif; ?>
 
-  <?php if (empty($cart_items)): ?>
-    <div style="text-align:center;padding:4rem 0;color:#9e7880;">
-      <p style="font-size:18px;margin-bottom:1rem;">Your cart is empty.</p>
-      <a href="<?= base_url('/products_catalog_view') ?>"
-         style="background:#E6A7B2;color:#4B1528;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:500;">
-        Browse Products
-      </a>
+        <?php if (empty($cart_items)): ?>
+            <div class="cart-empty">
+                <p>Your cart is empty.</p>
+                <a href="<?= base_url('/products_catalog_view') ?>" class="btn-primary-custom">
+                    Browse Products
+                </a>
+            </div>
+
+        <?php else: ?>
+            <div class="row g-4">
+                <div class="col-md-8">
+                    <?php foreach ($cart_items as $item): ?>
+                        <div class="cart-item-card">
+                            <div class="cart-item-img-wrapper">
+                                <?php if (!empty($item['product']['img']) && file_exists(FCPATH . $item['product']['img'])): ?>
+                                    <img src="<?= base_url($item['product']['img']) ?>" class="cart-item-img">
+                                <?php else: ?>
+                                    <div class="cart-item-img-placeholder">No img</div>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="cart-item-info">
+                                <p class="item-name"><?= esc($item['product']['name']) ?></p>
+                                <p class="item-meta">₱<?= number_format($item['product']['price']) ?> × <?= $item['quantity'] ?></p>
+                            </div>
+
+                            <div class="cart-item-price-block">
+                                <p class="item-subtotal">₱<?= number_format($item['subtotal']) ?></p>
+                                <a href="<?= base_url('/cart/remove/' . $item['product']['id']) ?>" class="btn-remove">Remove</a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="summary-card">
+                        <h2 class="summary-title">Order Summary</h2>
+
+                        <div class="summary-line">
+                            <span class="label">Subtotal</span>
+                            <span class="value">₱<?= number_format($grand_total) ?></span>
+                        </div>
+                        <div class="summary-line">
+                            <span class="label">Shipping</span>
+                            <span class="value">To be determined</span>
+                        </div>
+
+                        <hr class="summary-divider">
+
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span>₱<?= number_format($grand_total) ?></span>
+                        </div>
+
+                        <a href="<?= base_url('/checkout') ?>" class="btn-checkout">
+                            Proceed to Checkout
+                        </a>
+                        <a href="<?= base_url('/products_catalog_view') ?>" class="btn-continue">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
-
-  <?php else: ?>
-    <div class="row g-4">
-
-      <!-- Cart Items -->
-      <div class="col-md-8">
-        <?php foreach ($cart_items as $item): ?>
-          <div style="background:#fff;border:0.5px solid #e8d4d8;border-radius:12px;padding:1rem;margin-bottom:1rem;display:flex;gap:1rem;align-items:center;">
-
-            <!-- Image -->
-            <div style="width:80px;height:80px;flex-shrink:0;background:#f5ecee;border-radius:8px;overflow:hidden;">
-              <?php if (!empty($item['product']['img']) && file_exists(FCPATH . $item['product']['img'])): ?>
-                <img src="<?= base_url($item['product']['img']) ?>" style="width:100%;height:100%;object-fit:cover;">
-              <?php else: ?>
-                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#c0a0a8;font-size:11px;">No img</div>
-              <?php endif; ?>
-            </div>
-
-            <!-- Info -->
-            <div style="flex:1;">
-              <p style="font-weight:500;color:#3a2d30;margin:0 0 4px;"><?= esc($item['product']['name']) ?></p>
-              <p style="font-size:13px;color:#9e7880;margin:0;">₱<?= number_format($item['product']['price']) ?> × <?= $item['quantity'] ?></p>
-            </div>
-
-            <!-- Subtotal -->
-            <div style="text-align:right;">
-              <p style="font-weight:600;color:#3a2d30;margin:0;">₱<?= number_format($item['subtotal']) ?></p>
-              <a href="<?= base_url('/cart/remove/' . $item['product']['id']) ?>"
-                 style="font-size:12px;color:#c97d8e;text-decoration:none;">Remove</a>
-            </div>
-
-          </div>
-        <?php endforeach; ?>
-      </div>
-
-      <!-- Order Summary -->
-      <div class="col-md-4">
-        <div style="background:#fff;border:0.5px solid #e8d4d8;border-radius:12px;padding:1.25rem;">
-          <h2 style="font-size:16px;font-weight:600;color:#3a2d30;margin-bottom:1rem;">Order Summary</h2>
-
-          <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;">
-            <span style="color:#9e7880;">Subtotal</span>
-            <span>₱<?= number_format($grand_total) ?></span>
-          </div>
-          <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:16px;">
-            <span style="color:#9e7880;">Shipping</span>
-            <span>To be determined</span>
-          </div>
-
-          <hr style="border-color:#e8d4d8;">
-
-          <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:600;color:#3a2d30;margin-bottom:1rem;">
-            <span>Total</span>
-            <span>₱<?= number_format($grand_total) ?></span>
-          </div>
-
-          <a href="<?= base_url('/checkout') ?>"
-             style="display:block;text-align:center;background:#E6A7B2;color:#4B1528;padding:12px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;">
-            Proceed to Checkout
-          </a>
-          <a href="<?= base_url('/products_catalog_view') ?>"
-             style="display:block;text-align:center;margin-top:10px;font-size:13px;color:#9e7880;text-decoration:none;">
-            Continue Shopping
-          </a>
-        </div>
-      </div>
-
-    </div>
-  <?php endif; ?>
-
-</div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
