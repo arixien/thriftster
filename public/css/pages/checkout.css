@@ -84,7 +84,7 @@ body {
     font-weight: 600;
     color: var(--clr-text-dark);
     margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
     font-family: var(--font-sub);
 }
 
@@ -259,16 +259,16 @@ body {
     padding: 12px;
     border-radius: var(--radius-sm);
     font-family: var(--font-sub);
-    font-weight: 700;
-    font-size: 0.975rem;
-    color: #4B1528;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--clr-white);
     text-decoration: none;
     border: none;
-    transition: all 150ms ease;
+    transition: background 150ms ease, color 150ms ease;
     cursor: pointer;
 }
 
-.btn-place-order:hover {
+.btn-checkout:hover {
     background: var(--clr-rose-dark);
     color: var(--clr-white);
 }
