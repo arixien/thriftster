@@ -246,8 +246,37 @@ body {
     font-size: 1rem;
     font-weight: 700;
     color: var(--clr-text-dark);
-    margin-bottom: 1.25rem;
     letter-spacing: 0.03em;
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.summary-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-text-light);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.summary-edit:hover {
+    color: var(--clr-rose-dark);
+}
+
+.summary-edit .material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1;
 }
 
 /* Redefine button to match your previous cart style if needed */

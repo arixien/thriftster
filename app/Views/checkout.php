@@ -28,6 +28,7 @@ if (empty($cart_items)) {
 ?>
 
 <link rel="stylesheet" href="<?= base_url('public/css/pages/checkout.css') ?>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit" />
 
 <main class="checkout-main">
 <div class="container">
@@ -143,7 +144,13 @@ if (empty($cart_items)) {
     <!-- RIGHT -->
     <div class="col-md-5">
       <div class="summary-card sticky-summary">
-    <h2 class="summary-title">Order summary</h2>
+    <div class="summary-header">
+      <h2 class="summary-title">Order summary</h2>
+
+      <a href="<?= base_url('/cart') ?>" class="summary-edit">
+        <span class="material-symbols-outlined">edit</span>
+      </a>
+    </div>
 
         <?php foreach ($cart_items as $item): ?>
           <div class="checkout-item-row">
