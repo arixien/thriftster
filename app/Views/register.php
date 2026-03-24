@@ -73,7 +73,7 @@
         <div class="divider">or</div>
 
         <p class="switch-link">
-            Already have an account? <a href="/auth/login">Sign in</a>
+            Already have an account? <a href="<?= base_url('/auth/login') ?>">Sign in</a>
         </p>
     </div>
 </div>
