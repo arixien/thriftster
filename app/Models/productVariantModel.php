@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class productVariantModel extends Model
+class ProductVariantModel extends Model
 {
     protected $table = 'product_variants';
     protected $primaryKey = 'id';
