@@ -83,7 +83,7 @@ class Checkout extends BaseController
             'shipping_email'     => $this->request->getPost('email'),
             'shipping_phone'     => $this->request->getPost('phone'),
             'shipping_address'   => $this->request->getPost('address'),
-            'shipping_barangay'  => '',
+            'shipping_barangay'  => $this->request->getPost('barangay'),
             'shipping_city'      => $this->request->getPost('city'),
             'shipping_region'    => $this->request->getPost('province'),
             'shipping_postal_code'=> $this->request->getPost('zip'),

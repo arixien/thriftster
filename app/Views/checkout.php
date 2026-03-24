@@ -85,9 +85,16 @@ if (empty($cart_items)) {
           <h2 class="checkout-section-title-2">Shipping Details</h2>
 
           <div class="col-12">
-            <label class="checkout-label">Street address / Barangay</label>
+            <label class="checkout-label">Street Address</label>
             <input type="text" name="address" required
-                   placeholder="123 Rizal St., Brgy. San Jose"
+                   placeholder="123 Rizal St."
+                   class="checkout-input">
+          </div>
+
+          <div class="col-12">
+            <label class="checkout-label">Barangay</label>
+            <input type="text" name="barangay" required
+                   placeholder="Brgy. San Jose"
                    class="checkout-input">
           </div>
 
@@ -154,8 +161,8 @@ if (empty($cart_items)) {
 
         <?php foreach ([
             'cod' => 'Cash on Delivery',
-            'gcash' => 'E-Wallet',
-            'bank' => 'Card',
+            'ewallet' => 'E-Wallet',
+            'card' => 'Card',
         ] as $val => $label): ?>
 
           <label class="checkout-option">
