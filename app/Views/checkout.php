@@ -18,6 +18,13 @@ if (!empty($cart)) {
                 'quantity' => $item['quantity'],
                 'subtotal' => $subtotal,
             ];
+            $shipping_options = [
+                'jnt' => 100,
+                'lbc' => 120,
+                'ninja' => 100,
+                'lalamove' => 150,
+                'meetup' => 0,
+            ];
         }
     }
 }
@@ -114,12 +121,20 @@ if (empty($cart_items)) {
         ] as $val => $label): ?>
 
           <label class="checkout-option">
-            <input type="radio" name="shipping" value="<?= $val ?>" <?= $val === 'jnt' ? 'checked' : '' ?>>
-            <?= $label ?>
+            <input 
+              type="radio" 
+              name="shipping" 
+              value="<?= $val ?>" 
+              data-fee="<?= $shipping_options[$val] ?>"
+              <?= $val === 'jnt' ? 'checked' : '' ?>
+            >
+            <?= $label ?> — ₱<?= number_format($shipping_options[$val]) ?>
           </label>
 
         <?php endforeach; ?>
       </div>
+
+      <input type="hidden" name="shipping_fee" id="shipping_fee" value="<?= $shipping_options['jnt'] ?>">
 
       <!-- Payment -->
       <div class="checkout-card">
@@ -182,16 +197,16 @@ if (empty($cart_items)) {
           <span>₱<?= number_format($grand_total) ?></span>
         </div>
 
-        <div class="summary-line">
+        <div class="summary-line shipping-line">
           <span class="label">Shipping</span>
-          <span>To be determined</span>
+          <span class="shipping-value">₱0</span>
         </div>
 
         <hr class="summary-divider">
 
         <div class="summary-line total">
           <span>Total</span>
-          <span>₱<?= number_format($grand_total) ?></span>
+          <span class="total-value">₱0</span>
         </div>
 
         <button type="submit" class="btn-checkout">
@@ -208,5 +223,47 @@ if (empty($cart_items)) {
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+  radio.addEventListener('change', function () {
+    const fee = this.getAttribute('data-fee');
+    document.getElementById('shipping_fee').value = fee;
+  });
+});
+</script>
+<script>
+const subtotal = <?= $grand_total ?>;
+
+function updateSummary(fee) {
+    const shippingElement = document.querySelector('.shipping-value');
+    const totalElement = document.querySelector('.total-value');
+
+    const shippingFee = parseFloat(fee) || 0;
+    const total = subtotal + shippingFee;
+
+    // Update UI
+    shippingElement.textContent = '₱' + shippingFee.toLocaleString();
+    totalElement.textContent = '₱' + total.toLocaleString();
+}
+
+// Listen to shipping change
+document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+        const fee = this.getAttribute('data-fee');
+
+        document.getElementById('shipping_fee').value = fee;
+
+        updateSummary(fee);
+    });
+});
+
+// Initialize on page load (default checked = jnt)
+window.addEventListener('DOMContentLoaded', () => {
+    const checked = document.querySelector('input[name="shipping"]:checked');
+    if (checked) {
+        updateSummary(checked.getAttribute('data-fee'));
+    }
+});
+</script>
 </body>
 </html>

@@ -24,6 +24,17 @@ class Checkout extends BaseController
 
         // Calculate totals
         $model    = new \App\Models\ProductModel();
+        $shipping = $this->request->getPost('shipping');
+
+        $shippingFees = [
+            'jnt' => 100,
+            'lbc' => 120,
+            'ninja' => 100,
+            'lalamove' => 150,
+            'meetup' => 0,
+        ];
+
+        $delivery_fee = $shippingFees[$shipping] ?? 0;
         $subtotal = 0;
         $items    = [];
 
@@ -41,7 +52,7 @@ class Checkout extends BaseController
             }
         }
 
-        $delivery_fee = 0;
+        $delivery_fee = $shippingFees[$shipping] ?? 0;
         $total_amount = $subtotal + $delivery_fee;
 
         // Generate order number
