@@ -605,3 +605,42 @@ h5, h6, .subheading-font {
     .why-shop-title { font-size: 1.5rem; }
     .why-card { padding: 2rem 1.5rem 1.5rem; }
 }
+/* ====================== HERO FALLBACK TEXT ====================== */
+/* Fix so text + button both appear when no image */
+/* ====================== HERO TEXT OVERLAY ====================== */
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+    width: 100%;
+    padding: 0 20px;
+    pointer-events: none;   /* so button can still be clicked */
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    margin-bottom: 0.8rem;
+    z-index: 6;
+}
+
+.hero-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    font-style: italic;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    margin: 0;
+    z-index: 6;
+}
+
+/* Make sure button stays on top */
+.shop-now-btn {
+    z-index: 10;
+    position: relative;
+}
