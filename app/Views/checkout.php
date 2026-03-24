@@ -153,7 +153,9 @@ if (empty($cart_items)) {
         <?php endforeach; ?>
       </div>
 
-      <input type="hidden" name="shipping_fee" id="shipping_fee" value="<?= $shipping_options['jnt']['fee'] ?>">
+      <input type="hidden" name="shipping_fee"    id="shipping_fee"    value="<?= $shipping_options['jnt']['fee'] ?>">
+<input type="hidden" name="delivery_method" id="delivery_method" value="jnt">
+<input type="hidden" name="shipping_eta"    id="shipping_eta"    value="<?= $shipping_options['jnt']['eta'] ?>">
 
       <!-- Payment -->
       <div class="checkout-card">
@@ -273,13 +275,15 @@ function updateSummary(fee, eta) {
 
 document.querySelectorAll('input[name="shipping"]').forEach(radio => {
     radio.addEventListener('change', function () {
-        const fee = this.dataset.fee;
-        const eta = this.dataset.eta;
+    const fee = this.dataset.fee;
+    const eta = this.dataset.eta;
 
-        document.getElementById('shipping_fee').value = fee;
+    document.getElementById('shipping_fee').value    = fee;
+    document.getElementById('delivery_method').value = this.value;  // ADD THIS
+    document.getElementById('shipping_eta').value    = eta;         // ADD THIS
 
-        updateSummary(fee, eta);
-    });
+    updateSummary(fee, eta);
+});
 });
 
 // init
