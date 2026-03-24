@@ -39,9 +39,9 @@ $current_uri = uri_string();
     <div class="header-inner container-fluid px-3 px-md-4">
 
         <!-- ── LEFT: Logo ── -->
-        <a href="<?= base_url('/') ?>" class="logo-link" aria-label="Go to homepage">
+        <a href="<?= base_url('admin_dashboard') ?>" class="logo-link" aria-label="Go to homepage">
             <div class="logo-badge">
-                <img src="assets/header/logo.png"
+                <img src="<?= base_url('public/assets/includes/logo.png') ?>"
                      alt="Logo"
                      class="logo-img"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
