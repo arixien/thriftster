@@ -20,7 +20,7 @@
 </div>
     <div class="profile-head-actions">
         <a href="<?= base_url('account') ?>" class="edit-btn">My Account</a>
-        <a href="/profile/edit" class="edit-btn">Edit Profile</a>
+        <a href="<?= base_url('profile/edit') ?>" class="edit-btn">Edit Profile</a>
     </div>
 </div>
 
