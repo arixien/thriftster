@@ -166,7 +166,7 @@ body {
 
 .item-subtotal {
     font-family: var(--font-body);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--clr-text-dark);
     margin: 0;
 }
