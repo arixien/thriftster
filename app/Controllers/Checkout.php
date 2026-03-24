@@ -5,6 +5,9 @@ class Checkout extends BaseController
 {
     public function index()
     {
+        if (! session()->get('username')) {
+            return redirect()->to('/auth/login');
+        }
         $cart = session()->get('cart') ?? [];
         if (empty($cart)) {
             return redirect()->to('/cart');

@@ -1,0 +1,299 @@
+/* about_view.css - Following the Thriftster Coquette Aesthetic */
+
+:root {
+    --coquette-primary: #E6A7B2;
+    --coquette-secondary: #E2B4B8;
+    --coquette-taupe: #D2C4BC;
+    --coquette-lilac: #E0CCD8;
+    --coquette-light: #EDCED4;
+    --text-dark: #4A3C41;
+}
+
+.about-main {
+    background-color: #FAF6F7;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    padding-bottom: 5rem;
+}
+
+h1, h2, h3, .heading-font {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+}
+
+/* === Hero Section === */
+.about-hero {
+    width: 100%;
+    padding: 6rem 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff 0%, var(--coquette-light) 100%);
+    border-bottom: 2px dashed var(--coquette-secondary);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.about-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: radial-gradient(circle at 15px 15px, transparent 18px, #FAF6F7 19px, #FAF6F7 20px, transparent 20px);
+    background-size: 30px 30px;
+    background-position: 0 bottom;
+}
+
+.about-hero-text {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.heading-bow {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: bowSwing 3s ease-in-out infinite;
+}
+
+@keyframes bowSwing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.about-title {
+    font-size: 3.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.about-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.4rem;
+    color: var(--coquette-primary);
+    font-style: italic;
+    margin: 0;
+}
+
+/* === Our Story Section === */
+.about-story {
+    max-width: 900px;
+    margin: 5rem auto;
+    padding: 3rem;
+    background: #fff;
+    border: 2px solid var(--coquette-light);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(226, 180, 184, 0.15);
+    position: relative;
+}
+
+.about-story::before {
+    content: '✨';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    background: #FAF6F7;
+    padding: 0 15px;
+}
+
+.about-story h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.about-story p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #6B5A60;
+    margin-bottom: 1.5rem;
+}
+
+.about-story p:last-child {
+    margin-bottom: 0;
+}
+
+/* === Meet The Team Section === */
+.about-team {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.team-header h2 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin: 0.5rem 0;
+}
+
+.team-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    color: var(--coquette-primary);
+    font-style: italic;
+}
+
+/* Grid layout for 5 members: 3 on top row, 2 centered on bottom row */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.team-card {
+    width: calc(33.333% - 2rem);
+    max-width: 350px;
+    background: #fff;
+    border: 2px solid var(--coquette-light);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 18px rgba(226, 167, 178, 0.1);
+}
+
+/* Hover petal effects similar to categories */
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: all 0.4s ease;
+    z-index: 0;
+}
+
+.team-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: 0.25;
+    transition: all 0.4s ease;
+    z-index: 0;
+}
+
+/* Tint variations for team members */
+.member-1::before { background: linear-gradient(135deg, #FFE4EC 0%, #F9C7D4 100%); }
+.member-1::after  { background: linear-gradient(135deg, #F9C7D4 0%, #E6A7B2 100%); }
+
+.member-2::before { background: linear-gradient(135deg, #E4ECFF 0%, #C7D4F9 100%); }
+.member-2::after  { background: linear-gradient(135deg, #C7D4F9 0%, #A7B2E6 100%); }
+
+.member-3::before { background: linear-gradient(135deg, #FFE4F5 0%, #F9C7EC 100%); }
+.member-3::after  { background: linear-gradient(135deg, #F9C7EC 0%, #E6A7D9 100%); }
+
+.member-4::before { background: linear-gradient(135deg, #F5EEE4 0%, #E8D9C2 100%); }
+.member-4::after  { background: linear-gradient(135deg, #E8D9C2 0%, #C4A882 100%); }
+
+.member-5::before { background: linear-gradient(135deg, #F0E8F5 0%, #D9C2E8 100%); }
+.member-5::after  { background: linear-gradient(135deg, #D9C2E8 0%, #B088C4 100%); }
+
+
+.team-img-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem;
+    z-index: 1;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(145deg, #FFF5F7 0%, var(--coquette-light) 100%);
+    border: 2px dashed var(--coquette-secondary);
+    transition: all 0.4s ease;
+}
+
+.team-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.team-info {
+    position: relative;
+    z-index: 1;
+}
+
+.team-name {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin: 0 0 0.3rem;
+    transition: color 0.3s ease;
+}
+
+.team-role {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    color: var(--coquette-primary);
+    margin: 0;
+    font-style: italic;
+}
+
+
+/* Hover Effects */
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 35px rgba(226, 167, 178, 0.25);
+}
+
+.member-1:hover { border-color: #E6A7B2; background: linear-gradient(170deg, #fff 0%, #FFF0F3 60%, var(--coquette-light) 100%); }
+.member-2:hover { border-color: #A7B2E6; background: linear-gradient(170deg, #fff 0%, #F0F3FF 60%, #E4ECFF 100%); }
+.member-3:hover { border-color: #E6A7D9; background: linear-gradient(170deg, #fff 0%, #FFF0FC 60%, #FFE4F5 100%); }
+.member-4:hover { border-color: #C4A882; background: linear-gradient(170deg, #fff 0%, #FDF8F2 60%, #F5EEE4 100%); }
+.member-5:hover { border-color: #B088C4; background: linear-gradient(170deg, #fff 0%, #FAF0FF 60%, #F0E8F5 100%); }
+
+.team-card:hover::before { transform: scale(1.3); opacity: 0.6; }
+.team-card:hover::after  { transform: scale(1.4); opacity: 0.4; }
+
+.team-card:hover .team-img-wrap {
+    transform: scale(1.05);
+    border-style: solid;
+    border-color: var(--coquette-primary);
+    box-shadow: 0 8px 20px rgba(230, 167, 178, 0.35);
+}
+
+.member-1:hover .team-img-wrap { border-color: #E6A7B2; background: linear-gradient(145deg, #FFE4EC 0%, #E6A7B2 100%); }
+.member-2:hover .team-img-wrap { border-color: #A7B2E6; background: linear-gradient(145deg, #E4ECFF 0%, #A7B2E6 100%); }
+.member-3:hover .team-img-wrap { border-color: #E6A7D9; background: linear-gradient(145deg, #FFE4F5 0%, #E6A7D9 100%); }
+.member-4:hover .team-img-wrap { border-color: #C4A882; background: linear-gradient(145deg, #F5EEE4 0%, #C4A882 100%); }
+.member-5:hover .team-img-wrap { border-color: #B088C4; background: linear-gradient(145deg, #F0E8F5 0%, #B088C4 100%); }
+
+.member-1:hover .team-name { color: var(--coquette-primary); }
+.member-2:hover .team-name { color: #A7B2E6; }
+.member-3:hover .team-name { color: #E6A7D9; }
+.member-4:hover .team-name { color: #C4A882; }
+.member-5:hover .team-name { color: #B088C4; }
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .team-card { width: calc(50% - 1.5rem); }
+}
+
+@media (max-width: 768px) {
+    .about-title { font-size: 2.5rem; }
+    .about-story { padding: 2rem; margin: 3rem 1rem; }
+    .team-card { width: 100%; max-width: 400px; }
+}

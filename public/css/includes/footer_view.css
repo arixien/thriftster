@@ -52,6 +52,40 @@
     font-size: 0.8rem;
     color: #4A3C41;
     opacity: 0.8;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.about-us-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #4A3C41;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    border: 1.5px solid #E6A7B2;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.about-us-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.about-us-btn:hover {
+    background-color: #E6A7B2;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(230, 167, 178, 0.2);
+}
+
+.about-us-btn:hover i {
+    transform: translateX(4px);
 }
 
 .footer-divider {
