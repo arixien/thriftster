@@ -11,11 +11,15 @@
 
         <div class="profile-banner"></div>
 <div class="profile-head">
+<?php
+$pic = trim($user['profile_picture'] ?? '');
+$uploadPath = FCPATH . 'uploads/profiles/';
+?>
 <div class="avatar">
-    <?php if (!empty($user['profile_picture'])): ?>
-        <img src="<?= base_url('public/uploads/profiles/' . $user['profile_picture']) ?>" alt="Profile Picture">
+    <?php if (!empty($pic) && file_exists($uploadPath . $pic)): ?>
+        <img src="<?= base_url('uploads/profiles/' . $pic) ?>" alt="Profile Picture">
     <?php else: ?>
-        <?= strtoupper(substr($user['first_name'] ?? $user['username'] ?? '?', 0, 1)) ?>
+        <img src="<?= base_url('uploads/profiles/default_profile.jpg') ?>" alt="Default Profile Picture">
     <?php endif; ?>
 </div>
     <div class="profile-head-actions">

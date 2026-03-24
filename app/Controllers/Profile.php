@@ -38,10 +38,31 @@ public function update()
     ];
 
     $file = $this->request->getFile('profile_picture');
+
     if ($file && $file->isValid() && !$file->hasMoved()) {
+        $uploadPath = FCPATH . 'uploads/profiles/';
+
+        // Create folder if it doesn't exist
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0755, true);
+        }
+
+        // Delete old profile picture if it exists
+        $currentUser = $db->table('users')->where('id', $userId)->get()->getRow();
+        if (!empty($currentUser->profile_picture)) {
+            $oldFile = $uploadPath . $currentUser->profile_picture;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
+        }
+
         $newName = $file->getRandomName();
-        $file->move(FCPATH . 'public/uploads/profiles/', $newName);
-        $data['profile_picture'] = $newName;
+
+        if ($file->move($uploadPath, $newName)) {
+            $data['profile_picture'] = $newName;
+        } else {
+            return redirect()->back()->with('error', 'Upload failed: ' . $file->getErrorString());
+        }
     }
 
     $db->table('users')->where('id', $userId)->update($data);
