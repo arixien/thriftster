@@ -76,6 +76,23 @@
     </div>
 </div>
 
+<script>
+    document.getElementById('profile_picture').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            // Find the avatar img tag and update its src
+            const avatar = document.querySelector('.avatar img');
+            if (avatar) {
+                avatar.src = event.target.result;
+            }
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
+
 <?= view('includes/footer_view') ?>
 
 </body>
