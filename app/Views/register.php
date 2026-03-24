@@ -49,7 +49,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="post" action="/auth/register">
+        <form action="<?= base_url('auth/register') ?>" method="post">
             <?= csrf_field() ?>
 
             <div class="field">
