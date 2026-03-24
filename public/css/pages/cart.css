@@ -106,11 +106,35 @@ body {
     gap: 1rem;
     align-items: center;
     box-shadow: var(--shadow-card);
+    position: relative;
+}
+
+.cart-remove-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--clr-text-light);
+
+    transition: 0.2s;
+}
+
+.cart-remove-icon:hover {
+    color: var(--clr-rose);
 }
 
 .cart-item-img-wrapper {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     flex-shrink: 0;
     background: #f5ecee;
     border-radius: var(--radius-sm);
@@ -155,9 +179,15 @@ body {
 
 .item-meta {
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 0.9rem;
     color: var(--clr-text-light);
     margin: 0;
+}
+
+.item-price {
+    font-size: 13px;
+    color: var(--clr-text-light);
+    margin: 2px 0 6px;
 }
 
 .cart-item-price-block {
@@ -165,10 +195,13 @@ body {
 }
 
 .item-subtotal {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+
     font-family: var(--font-body);
     font-weight: 500;
     color: var(--clr-text-dark);
-    margin: 0;
 }
 
 .btn-remove {
@@ -265,6 +298,43 @@ body {
 
 .btn-continue:hover {
     background-color: #f5ecee;
+}
+
+.cart-qty-controls {
+    border: 1px solid var(--clr-rose);
+    background-color: var(--clr-white);
+    border-radius: var(--radius-pill);
+    display: inline-flex;;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.qty-btn {
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--clr-text-dark);
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.qty-btn:hover {
+    color: var(--clr-rose-dark);
+}
+
+.qty-number {
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.qty-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none; /* 🔥 prevents clicking */
+    cursor: not-allowed;
 }
 
 

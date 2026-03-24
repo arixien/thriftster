@@ -43,4 +43,28 @@ class Cart extends BaseController
         session()->set('cart_count', array_sum(array_column($cart, 'quantity')));
         return redirect()->to('/cart');
     }
+
+    public function update($id, $action)
+    {
+        $cart = session()->get('cart') ?? [];
+
+        if (!isset($cart[$id])) {
+            return redirect()->back();
+        }
+
+        if ($action === 'increase') {
+            $cart[$id]['quantity']++;
+
+        } elseif ($action === 'decrease') {
+
+            if ($cart[$id]['quantity'] > 1) {
+                $cart[$id]['quantity']--;
+            }
+
+        }
+
+        session()->set('cart', $cart);
+
+        return redirect()->back();
+    }
 }

@@ -23,6 +23,7 @@ if (!empty($cart)) {
 ?>
 
 <link rel="stylesheet" href="<?= base_url('public/css/pages/cart.css') ?>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
 
 <main class="cart-main">
     <div class="container">
@@ -54,13 +55,31 @@ if (!empty($cart)) {
                             </div>
 
                             <div class="cart-item-info">
-                                <p class="item-name"><?= esc($item['product']['name']) ?></p>
-                                <p class="item-meta">₱<?= number_format($item['product']['price']) ?> × <?= $item['quantity'] ?></p>
-                            </div>
+                    <p class="item-name"><?= esc($item['product']['name']) ?></p>
+                    <p class="item-price">
+                        ₱<?= number_format($item['product']['price']) ?>
+                    </p>
+
+                    <div class="cart-qty-controls">
+                        <a href="<?= $item['quantity'] > 1 ? base_url('/cart/update/' . $item['product']['id'] . '/decrease') : '#' ?>"
+                        class="qty-btn qty-minus <?= $item['quantity'] <= 1 ? 'disabled' : '' ?>">
+                            −
+                        </a>
+
+                        <span class="qty-number"><?= $item['quantity'] ?></span>
+
+                        <a href="<?= base_url('/cart/update/' . $item['product']['id'] . '/increase') ?>"
+                        class="qty-btn qty-plus">
+                            +
+                        </a>
+                    </div>
+                </div>
 
                             <div class="cart-item-price-block">
+                                <a href="<?= base_url('/cart/remove/' . $item['product']['id']) ?>" class="cart-remove-icon">
+                                    <span class="material-symbols-outlined">close</span>
+                                </a>
                                 <p class="item-subtotal">₱<?= number_format($item['subtotal']) ?></p>
-                                <a href="<?= base_url('/cart/remove/' . $item['product']['id']) ?>" class="btn-remove">Remove</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -76,7 +95,7 @@ if (!empty($cart)) {
                         </div>
                         <div class="summary-line">
                             <span class="label">Shipping</span>
-                            <span class="value">To be determined</span>
+                            <span class="value">Calculated at Checkout</span>
                         </div>
 
                         <hr class="summary-divider">

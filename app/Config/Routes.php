@@ -33,6 +33,7 @@ $routes->get('/cart/remove/(:num)', 'Cart::remove/$1');
 $routes->get('/checkout', 'Checkout::index');
 $routes->post('/checkout/place', 'Checkout::place');
 $routes->get('/order/success', 'Checkout::success');
+$routes->get('/cart/update/(:num)/(:any)', 'Cart::update/$1/$2');
 
 // ── Admin ────────────────────────────────────────────────────
 $routes->get('/admin_dashboard', 'Dashboard::index');
