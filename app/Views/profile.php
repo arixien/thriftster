@@ -9,19 +9,19 @@
 
     <div class="profile-card">
 
-        <div class="profile-banner"></div>
-<div class="profile-head">
-<?php
-$pic = trim($user['profile_picture'] ?? '');
-$uploadPath = FCPATH . 'uploads/profiles/';
-?>
-<div class="avatar">
-    <?php if (!empty($pic) && file_exists($uploadPath . $pic)): ?>
-        <img src="<?= base_url('uploads/profiles/' . $pic) ?>" alt="Profile Picture">
-    <?php else: ?>
-        <img src="<?= base_url('uploads/profiles/default_profile.jpg') ?>" alt="Default Profile Picture">
-    <?php endif; ?>
-</div>
+    <div class="profile-banner"></div>
+    <div class="profile-head">
+    <?php
+    $pic = trim($user['profile_picture'] ?? '');
+    $uploadPath = FCPATH . 'uploads/profiles/';
+    ?>
+    <div class="avatar">
+        <?php if (!empty($pic) && file_exists($uploadPath . $pic)): ?>
+            <img src="<?= base_url('uploads/profiles/' . $pic) ?>" alt="Profile Picture">
+        <?php else: ?>
+            <img src="<?= base_url('uploads/profiles/default_profile.jpg') ?>" alt="Default Profile Picture">
+        <?php endif; ?>
+    </div>
     <div class="profile-head-actions">
         <a href="<?= base_url('account') ?>" class="edit-btn">My Account</a>
         <a href="<?= base_url('profile/edit') ?>" class="edit-btn">Edit Profile</a>
