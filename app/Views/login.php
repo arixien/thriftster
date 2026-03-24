@@ -39,7 +39,7 @@
             <div class="error-box"><?= $error ?></div>
         <?php endif; ?>
 
-        <form method="post" action="/auth/login">
+        <form action="<?= base_url('auth/login') ?>" method="post">
             <?= csrf_field() ?>
 
             <div class="field">
