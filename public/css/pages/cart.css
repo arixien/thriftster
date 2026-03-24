@@ -219,8 +219,8 @@ body {
 
 .summary-line.total {
     font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--clr-text-dark);
     margin-bottom: 1rem;
 }
