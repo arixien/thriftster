@@ -26,6 +26,8 @@ $routes->get('/wishlist', 'Wishlist::index');
 $routes->get('profile', 'Profile::index');
 $routes->get('profile/edit', 'Profile::edit');
 $routes->post('profile/edit', 'Profile::update');
+$routes->get('/catalog', 'ProductsCatalog::index');
+
 
 // ── Cart & Checkout ──────────────────────────────────────────
 $routes->get('/cart', 'Cart::index');
