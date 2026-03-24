@@ -5,6 +5,9 @@ class Cart extends BaseController
 {
     public function index()
     {
+        if (! session()->get('username')) {
+            return redirect()->to('/auth/login');
+        }
         return view('cart');
     }
 

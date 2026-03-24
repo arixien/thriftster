@@ -8,12 +8,12 @@ $current_uri = uri_string();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thrift Store</title>
+    <title>ThriftSter</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('public/css/includes/header_view.css') ?>">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎀</text></svg>">
+    <link rel="icon" href="public/assets/includes/logo.png">
 
    
 
@@ -51,7 +51,7 @@ $current_uri = uri_string();
 
         <a href="<?= base_url('/') ?>" class="logo-link" aria-label="Go to homepage">
             <div class="logo-badge">
-                <img src="public/assets/header/logo.png"
+                <img src="public/assets/includes/logo.png"
                      alt="Logo"
                      class="logo-img"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">

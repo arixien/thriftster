@@ -12,7 +12,9 @@
 <div class="left-panel">
     <div class="brand">
         <div class="brand-icon">🎀</div>
-        <span class="brand-name">Thriftster</span>
+        <a href="<?= base_url('/') ?>">
+            <span class="brand-name">Thriftster</span>
+        </a>
     </div>
 
     <div class="left-content">
