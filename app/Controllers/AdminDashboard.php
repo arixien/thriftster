@@ -1,4 +1,8 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
+use App\Models\DashboardModel;
 
 class AdminDashboard extends BaseController
 {
@@ -9,6 +13,16 @@ class AdminDashboard extends BaseController
             return redirect()->to('/dashboard');
         }
 
-        return view('admin_dashboard');
+        $dashboardModel = new DashboardModel();
+
+        $data = [
+            'total_products'  => $dashboardModel->getTotalProducts(),
+            'total_orders'    => $dashboardModel->getTotalOrders(),
+            'total_users'     => $dashboardModel->getTotalUsers(),
+            'latest_products' => $dashboardModel->getLatestProducts(),
+            'recent_orders'   => $dashboardModel->getRecentOrders(),
+        ];
+
+        return view('admin_dashboard', $data);
     }
 }

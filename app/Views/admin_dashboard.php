@@ -1,31 +1,31 @@
 <?= view('includes/admin_header_view') ?>
 <body>
     <main class="dashboard-container">
+
         <!-- Statistics Cards -->
         <section class="stats-section">
             <div class="stat-card">
                 <span class="stat-label">Total Products</span>
-                <span class="stat-value">124</span>
+                <span class="stat-value"><?= esc($total_products) ?></span>
             </div>
             <div class="stat-card">
                 <span class="stat-label">Total Orders</span>
-                <span class="stat-value">18</span>
+                <span class="stat-value"><?= esc($total_orders) ?></span>
             </div>
             <div class="stat-card">
                 <span class="stat-label">Total Users</span>
-                <span class="stat-value">50</span>
+                <span class="stat-value"><?= esc($total_users) ?></span>
             </div>
         </section>
 
         <!-- Main Content Grid -->
         <section class="main-content-grid">
-            
+
             <!-- Latest Products -->
             <div class="latest-products-panel">
                 <div class="panel-header">
                     <h2>Latest Products</h2>
-                    <a href="#" class="add-btn">Add Products</a>
-                </div>
+<a href="/admin/products/add" class="add-btn">Add Products</a>                </div>
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
@@ -38,40 +38,32 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><div class="img-placeholder"></div></td>
-                                <td>Vintage Floral Dress</td>
-                                <td>Dresses</td>
-                                <td>$45.00</td>
-                                <td>12</td>
-                                <td class="actions-cell"><a href="#" class="edit-btn">Edit</a> <a href="#" class="delete-btn">Delete</a></td>
-                            </tr>
-                            <tr>
-                                <td><div class="img-placeholder"></div></td>
-                                <td>Lace Trim Blouse</td>
-                                <td>Tops</td>
-                                <td>$28.00</td>
-                                <td>8</td>
-                                <td class="actions-cell"><a href="#" class="edit-btn">Edit</a> <a href="#" class="delete-btn">Delete</a></td>
-                            </tr>
-                            <tr>
-                                <td><div class="img-placeholder"></div></td>
-                                <td>Pleated Mini Skirt</td>
-                                <td>Bottoms</td>
-                                <td>$32.00</td>
-                                <td>15</td>
-                                <td class="actions-cell"><a href="#" class="edit-btn">Edit</a> <a href="#" class="delete-btn">Delete</a></td>
-                            </tr>
-                            <tr>
-                                <td><div class="img-placeholder"></div></td>
-                                <td>Pearl Cardigan</td>
-                                <td>Outerwear</td>
-                                <td>$55.00</td>
-                                <td>5</td>
-                                <td class="actions-cell"><a href="#" class="edit-btn">Edit</a> <a href="#" class="delete-btn">Delete</a></td>
-                            </tr>
-                        </tbody>
+                       <tbody>
+    <?php if (!empty($latest_products)): ?>
+        <?php foreach ($latest_products as $product): ?>
+        <tr>
+            <td>
+                <?php if (!empty($product['img'])): ?>
+                    <img src="<?= esc($product['img']) ?>" alt="<?= esc($product['name']) ?>" width="50">
+                <?php else: ?>
+                    <div class="img-placeholder"></div>
+                <?php endif; ?>
+            </td>
+            <td><?= esc($product['name']) ?></td>
+            <td><?= esc($product['category'] ?? 'N/A') ?></td>  <!-- changed from category_name -->
+            <td>$<?= esc(number_format($product['price'], 2)) ?></td>
+            <td><?= esc($product['stock']) ?></td>
+            <td class="actions-cell">
+                <a href="/admin/products/edit/<?= $product['id'] ?>" class="edit-btn">Edit</a>
+                <a href="/admin/products/delete/<?= $product['id'] ?>" class="delete-btn"
+                   onclick="return confirm('Delete this product?')">Delete</a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr><td colspan="6">No products found.</td></tr>
+    <?php endif; ?>
+</tbody>
                     </table>
                 </div>
             </div>
@@ -90,30 +82,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>#ORD-1029</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-1028</td>
-                                <td><span class="status shipped">Shipped</span></td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-1027</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-                            <tr>
-                                <td>#ORD-1026</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
+                            <?php if (!empty($recent_orders)): ?>
+                                <?php foreach ($recent_orders as $order): ?>
+                                <tr>
+                                    <td>#ORD-<?= esc($order['id']) ?></td>
+                                    <td>
+                                        <span class="status <?= esc(strtolower($order['status'])) ?>">
+                                            <?= esc(ucfirst($order['status'])) ?>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr><td colspan="2">No orders found.</td></tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <a href="/thriftster/orders" class="view-all-btn">View Orders</a>
+<a href="/admin/orders" class="view-all-btn">View Orders</a>
                 </div>
             </div>
-            
+
         </section>
     </main>
 </body>

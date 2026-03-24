@@ -39,13 +39,14 @@ $routes->get('/order/success', 'Checkout::success');
 $routes->get('/cart/update/(:num)/(:any)', 'Cart::update/$1/$2');
 
 // ── Admin ────────────────────────────────────────────────────
-$routes->get('/admin_dashboard', 'Dashboard::index');
+// ── Admin ────────────────────────────────────────────────────
+$routes->get('/admin_dashboard', 'AdminDashboard::index');  // ← fix this
 $routes->get('/admin/products', 'AdminProducts::index');
 $routes->get('/admin/products/add', 'AdminProducts::add');
 $routes->get('/admin/products/edit/(:num)', 'AdminProducts::edit/$1');
 $routes->get('/admin/products/delete/(:num)', 'AdminProducts::delete/$1');
 $routes->get('/admin/orders', 'AdminOrders::index');
 $routes->get('/admin/orders/view', 'AdminOrders::view');
-$routes->post('/admin/products/store',         'AdminProducts::store');
+$routes->post('/admin/products/store', 'AdminProducts::store');
 $routes->post('/admin/products/update/(:num)', 'AdminProducts::update/$1');
 $routes->get('/admin/products/delete/(:num)', 'AdminProducts::delete/$1');
