@@ -28,13 +28,13 @@
     <?= csrf_field() ?>
 
     <div class="avatar-upload">
-        <div class="avatar">
-            <?php if (!empty($user['profile_picture'])): ?>
-                <img src="<?= base_url('public/uploads/profiles/' . $user['profile_picture']) ?>" alt="Profile Picture">
-            <?php else: ?>
-                <?= strtoupper(substr($user['first_name'] ?? $user['username'] ?? '?', 0, 1)) ?>
-            <?php endif; ?>
-        </div>
+    <div class="avatar">
+        <?php if (!empty($pic) && file_exists($uploadPath . $pic)): ?>
+            <img src="<?= base_url('uploads/profiles/' . $pic) ?>" alt="Profile Picture">
+        <?php else: ?>
+            <img src="<?= base_url('uploads/profiles/default_profile.jpg') ?>" alt="Default Profile Picture">
+        <?php endif; ?>
+    </div>
         <label for="profile_picture" class="avatar-edit-btn" title="Change photo">✎</label>
         <input type="file" id="profile_picture" name="profile_picture" accept="image/*" style="display:none;">
     </div>
