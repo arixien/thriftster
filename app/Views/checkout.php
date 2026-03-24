@@ -19,11 +19,11 @@ if (!empty($cart)) {
                 'subtotal' => $subtotal,
             ];
             $shipping_options = [
-                'jnt' => 100,
-                'lbc' => 120,
-                'ninja' => 100,
-                'lalamove' => 150,
-                'meetup' => 0,
+                'jnt' => ['fee' => 100, 'eta' => '2–3 days'],
+                'lbc' => ['fee' => 120, 'eta' => '3–5 days'],
+                'ninja' => ['fee' => 100, 'eta' => '2–4 days'],
+                'lalamove' => ['fee' => 150, 'eta' => 'Same day'],
+                'meetup' => ['fee' => 0, 'eta' => 'Same day'],
             ];
         }
     }
@@ -109,32 +109,44 @@ if (empty($cart_items)) {
       </div>
 
       <!-- Shipping Method -->
-      <div class="checkout-card">
+      <div class="checkout-card shipping-method">
         <h2 class="checkout-section-title">Shipping method</h2>
 
-        <?php foreach ([
-            'jnt' => 'J&T Express',
-            'lbc' => 'LBC',
-            'ninja' => 'Ninja Van',
-            'lalamove' => 'Lalamove',
-            'meetup' => 'Meet-up / Pickup',
-        ] as $val => $label): ?>
-
+        <?php foreach ($shipping_options as $val => $data): ?>
           <label class="checkout-option">
-            <input 
-              type="radio" 
-              name="shipping" 
-              value="<?= $val ?>" 
-              data-fee="<?= $shipping_options[$val] ?>"
-              <?= $val === 'jnt' ? 'checked' : '' ?>
-            >
-            <?= $label ?> — ₱<?= number_format($shipping_options[$val]) ?>
-          </label>
 
+            <div class="shipping-left">
+              <input 
+                type="radio" 
+                name="shipping" 
+                value="<?= $val ?>" 
+                data-fee="<?= $data['fee'] ?>"
+                data-eta="<?= $data['eta'] ?>"
+                <?= $val === 'jnt' ? 'checked' : '' ?>
+              >
+
+              <div>
+                <div><?= [
+                    'jnt'=>'J&T Express',
+                    'lbc'=>'LBC',
+                    'ninja'=>'Ninja Van',
+                    'lalamove'=>'Lalamove',
+                    'meetup'=>'Meet-up / Pickup'
+                ][$val] ?></div>
+
+                <small class="shipping-eta"><?= $data['eta'] ?></small>
+              </div>
+            </div>
+
+            <span class="shipping-fee">
+              ₱<?= number_format($data['fee']) ?>
+            </span>
+
+          </label>
         <?php endforeach; ?>
       </div>
 
-      <input type="hidden" name="shipping_fee" id="shipping_fee" value="<?= $shipping_options['jnt'] ?>">
+      <input type="hidden" name="shipping_fee" id="shipping_fee" value="<?= $shipping_options['jnt']['fee'] ?>">
 
       <!-- Payment -->
       <div class="checkout-card">
@@ -142,8 +154,8 @@ if (empty($cart_items)) {
 
         <?php foreach ([
             'cod' => 'Cash on Delivery',
-            'gcash' => 'GCash',
-            'bank' => 'Bank Transfer',
+            'gcash' => 'E-Wallet',
+            'bank' => 'Card',
         ] as $val => $label): ?>
 
           <label class="checkout-option">
@@ -209,6 +221,11 @@ if (empty($cart_items)) {
           <span class="total-value">₱0</span>
         </div>
 
+        <div class="summary-line">
+          <span class="label">Estimated Delivery</span>
+          <span class="eta-value">-</span>
+        </div>
+
         <button type="submit" class="btn-checkout">
           Place Order
         </button>
@@ -234,34 +251,35 @@ document.querySelectorAll('input[name="shipping"]').forEach(radio => {
 <script>
 const subtotal = <?= $grand_total ?>;
 
-function updateSummary(fee) {
+function updateSummary(fee, eta) {
     const shippingElement = document.querySelector('.shipping-value');
     const totalElement = document.querySelector('.total-value');
+    const etaElement = document.querySelector('.eta-value');
 
     const shippingFee = parseFloat(fee) || 0;
     const total = subtotal + shippingFee;
 
-    // Update UI
     shippingElement.textContent = '₱' + shippingFee.toLocaleString();
     totalElement.textContent = '₱' + total.toLocaleString();
+    etaElement.textContent = eta;
 }
 
-// Listen to shipping change
 document.querySelectorAll('input[name="shipping"]').forEach(radio => {
     radio.addEventListener('change', function () {
-        const fee = this.getAttribute('data-fee');
+        const fee = this.dataset.fee;
+        const eta = this.dataset.eta;
 
         document.getElementById('shipping_fee').value = fee;
 
-        updateSummary(fee);
+        updateSummary(fee, eta);
     });
 });
 
-// Initialize on page load (default checked = jnt)
+// init
 window.addEventListener('DOMContentLoaded', () => {
     const checked = document.querySelector('input[name="shipping"]:checked');
     if (checked) {
-        updateSummary(checked.getAttribute('data-fee'));
+        updateSummary(checked.dataset.fee, checked.dataset.eta);
     }
 });
 </script>

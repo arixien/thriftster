@@ -34,6 +34,14 @@ class Checkout extends BaseController
             'meetup' => 0,
         ];
 
+        $deliveryEstimates = [
+            'jnt' => '2–3 days',
+            'lbc' => '3–5 days',
+            'ninja' => '2–4 days',
+            'lalamove' => 'Same day',
+            'meetup' => 'Same day',
+        ];
+
         $delivery_fee = $shippingFees[$shipping] ?? 0;
         $subtotal = 0;
         $items    = [];
@@ -54,6 +62,7 @@ class Checkout extends BaseController
 
         $delivery_fee = $shippingFees[$shipping] ?? 0;
         $total_amount = $subtotal + $delivery_fee;
+        $estimated_delivery = $deliveryEstimates[$shipping] ?? null;
 
         // Generate order number
         $order_number = 'ORD-' . strtoupper(uniqid());
@@ -67,6 +76,7 @@ class Checkout extends BaseController
             'delivery_fee'       => $delivery_fee,
             'total_amount'       => $total_amount,
             'delivery_method'    => $this->request->getPost('shipping'),
+            'estimated_delivery_at' => $this->request->getPost('estimated_delivery'),
             'payment_method'     => $this->request->getPost('payment_method'),
             'shipping_first_name'=> $this->request->getPost('first_name'),
             'shipping_last_name' => $this->request->getPost('last_name'),
