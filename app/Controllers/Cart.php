@@ -13,6 +13,9 @@ class Cart extends BaseController
 
     public function add()
     {
+        if (! session()->get('username')) {
+            return redirect()->to('/auth/login');
+        }
         $product_id = $this->request->getPost('product_id');
         $quantity   = (int)$this->request->getPost('quantity') ?: 1;
         $action     = $this->request->getPost('action');

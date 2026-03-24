@@ -11,6 +11,7 @@ $routes->get('/', 'Storefront::index');
 $routes->get('/products_catalog_view', 'ProductsCatalog::index');
 $routes->get('/search', 'Search::index');
 $routes->get('/product/(:num)', 'ProductDetail::index/$1');
+$routes->get('/about', 'About::index');
 
 // ── Auth ─────────────────────────────────────────────────────
 $routes->match(['get', 'post'], '/auth/register', 'Auth::register');

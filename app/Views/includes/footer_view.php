@@ -10,6 +10,9 @@
             <div class="footer-logo-text">
                 <span class="footer-logo-name">ThriftSter</span>
                 <span class="footer-logo-desc">Thriftster is your space for delicate, curated vintage finds — where every piece is soft, feminine, and uniquely yours.</span>
+                <button onclick="window.location.href='<?= base_url('about') ?>'" class="about-us-btn">
+                    About Us <i class="bi bi-arrow-right"></i>
+                </button>
             </div>
         </div>
         
