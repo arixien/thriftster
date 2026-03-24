@@ -24,7 +24,7 @@ class Checkout extends BaseController
 
         // Calculate totals
         $model    = new \App\Models\ProductModel();
-        $shipping = $this->request->getPost('shipping');
+       $shipping = $this->request->getPost('shipping');
 
         $shippingFees = [
             'jnt' => 100,
@@ -67,29 +67,32 @@ class Checkout extends BaseController
         // Generate order number
         $order_number = 'ORD-' . strtoupper(uniqid());
 
+
         // Insert order
-        $db->table('orders')->insert([
-            'order_number'       => $order_number,
-            'buyer_id'           => session()->get('user_id'),
-            'status'             => 'pending',
-            'subtotal'           => $subtotal,
-            'delivery_fee'       => $delivery_fee,
-            'total_amount'       => $total_amount,
-            'delivery_method'    => $this->request->getPost('shipping'),
-            'estimated_delivery_at' => $this->request->getPost('estimated_delivery'),
-            'payment_method'     => $this->request->getPost('payment_method'),
-            'shipping_first_name'=> $this->request->getPost('first_name'),
-            'shipping_last_name' => $this->request->getPost('last_name'),
-            'shipping_email'     => $this->request->getPost('email'),
-            'shipping_phone'     => $this->request->getPost('phone'),
-            'shipping_address'   => $this->request->getPost('address'),
-            'shipping_barangay'  => $this->request->getPost('barangay'),
-            'shipping_city'      => $this->request->getPost('city'),
-            'shipping_region'    => $this->request->getPost('province'),
-            'shipping_postal_code'=> $this->request->getPost('zip'),
-            'created_at'         => date('Y-m-d H:i:s'),
-            'updated_at'         => date('Y-m-d H:i:s'),
-        ]);
+        // Insert order
+$db->table('orders')->insert([
+    'order_number'          => $order_number,
+    'buyer_id'              => session()->get('user_id'),
+    'status'                => 'pending',
+    'subtotal'              => $subtotal,
+    'delivery_fee'          => $delivery_fee,
+    'total_amount'          => $total_amount,
+    'delivery_method'       => $shipping,
+    'estimated_delivery_at' => $estimated_delivery,
+    'payment_method'        => $this->request->getPost('payment_method'),
+    'paid_at' => date('Y-m-d H:i:s'),
+    'shipping_first_name'   => $this->request->getPost('first_name'),
+    'shipping_last_name'    => $this->request->getPost('last_name'),
+    'shipping_email'        => $this->request->getPost('email'),
+    'shipping_phone'        => $this->request->getPost('phone'),
+    'shipping_address'      => $this->request->getPost('address'),
+    'shipping_barangay'     => $this->request->getPost('barangay'),
+    'shipping_city'         => $this->request->getPost('city'),
+    'shipping_region'       => $this->request->getPost('province'),
+    'shipping_postal_code'  => $this->request->getPost('zip'),
+    'created_at'            => date('Y-m-d H:i:s'),
+    'updated_at'            => date('Y-m-d H:i:s'),
+]);
 
         $order_id = $db->insertID();
 
