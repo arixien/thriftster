@@ -51,7 +51,7 @@ $current_uri = uri_string();
 
         <a href="<?= base_url('/') ?>" class="logo-link" aria-label="Go to homepage">
             <div class="logo-badge">
-                <img src="public/assets/includes/logo.png"
+                <img src="<?= base_url('public/assets/includes/logo.png') ?>"
                      alt="Logo"
                      class="logo-img"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">

@@ -14,7 +14,6 @@
     <div class="edit-card">
 
         <div class="edit-banner">
-            <div class="edit-banner-text">EDIT · PROFILE · UPDATE ·</div>
         </div>
 
 <div class="edit-head">

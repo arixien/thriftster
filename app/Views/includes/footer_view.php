@@ -4,7 +4,7 @@
     <div class="footer-content container-fluid">
         <div class="footer-logo-wrap">
             <div class="footer-logo-badge">
-                <img src="public/assets/includes/logo.png" alt="Logo" class="img-fluid" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <img src="<?= base_url('public/assets/includes/logo.png') ?>" alt="Logo" class="img-fluid" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                 <span class="logo-fallback" style="display:none; color: #4A3C41;">✿</span>
             </div>
             <div class="footer-logo-text">
