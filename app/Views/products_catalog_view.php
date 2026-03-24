@@ -15,9 +15,7 @@ $categories = [
 ];
 
 $products = match ($active_cat) {
-'new' => array_slice(
-    array_values($all_products), 0, 12
-),
+'new' => array_values(array_filter($all_products, fn($p) => $p['badge'] === 'New')),
     'tops'        => array_values(array_filter($all_products, fn($p) => $p['category'] === 'tops')),
     'bottoms'     => array_values(array_filter($all_products, fn($p) => $p['category'] === 'bottoms')),
     'accessories' => array_values(array_filter($all_products, fn($p) => $p['category'] === 'accessories')),

@@ -3,7 +3,10 @@
  * storefront_view.php
  */
 
-// ── Pull New Arrivals (badge = 'New') from the catalog product data ──
+// ── Promo banner path ─────────────────────────────────────────
+$promo_banner_path   = 'assets/includes/promo_banner.png';
+$promo_banner_exists = file_exists(FCPATH . 'public/' . $promo_banner_path);
+
 $tops_products = [
     ['id'=>101,'name'=>'Primrose Ribbed Baby Tee',    'price'=>320, 'img'=>'assets/tops/top1_A.png',  'badge'=>'New',  'category'=>'tops'],
     ['id'=>102,'name'=>'Ivory Whisper Dress',         'price'=>240, 'img'=>'assets/tops/top2_A.png',  'badge'=>null,   'category'=>'tops'],
@@ -80,8 +83,18 @@ $last_products = [
 ];
  
 // ── Filter all products for badge = 'New', take first 8 for the grid ──
-$all_products = array_merge($tops_products, $bottoms_products, $accessories_products, $bags_products, $last_products);
+// ── New Arrivals for homepage (exactly matches the "New" tab on catalog page) ──
+$all_products = array_merge(
+    $tops_products, 
+    $bottoms_products, 
+    $accessories_products, 
+    $bags_products, 
+    $last_products
+);
+
 $new_arrivals = array_values(array_filter($all_products, fn($p) => $p['badge'] === 'New'));
+
+// Take only first 8 for the "New Releases" section on homepage
 $featured_new = array_slice($new_arrivals, 0, 8);
  
 // ── Promo banner path ─────────────────────────────────────────
@@ -95,16 +108,27 @@ $promo_banner_exists = file_exists(FCPATH . 'public/' . $promo_banner_path);
 <main class="storefront-main">
  
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-banner">
-            <?php if ($promo_banner_exists): ?>
-                <img src="<?= base_url('public/' . $promo_banner_path) ?>" alt="Promo Banner" class="promo-banner-img">
-            <?php else: ?>
-                <h1 class="hero-title">Promotional Banner</h1>
-            <?php endif; ?>
-            <a href="<?= base_url('/products_catalog_view') ?>" class="shop-now-btn">Shop Now</a>
+       <!-- Hero Section -->
+<!-- Hero Section -->
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-banner">
+        <?php if ($promo_banner_exists): ?>
+            <img src="<?= base_url('public/' . $promo_banner_path) ?>" 
+                 alt="Thriftster Promo Banner" 
+                 class="promo-banner-img">
+        <?php endif; ?>
+
+        <!-- Text always appears on top of the image -->
+        <div class="hero-text-overlay">
+            <h1 class="hero-title">Discover Your Dream Wardrobe</h1>
+            <p class="hero-subtitle">Soft girly finds • Cottagecore aesthetics • One-of-a-kind treasures ♡</p>
         </div>
-    </section>
+
+        <a href="<?= base_url('/products_catalog_view') ?>" class="shop-now-btn">Shop Now</a>
+    </div>
+</section>
 
     <!-- Categories Section -->
     <section class="categories-section">
@@ -114,44 +138,65 @@ $promo_banner_exists = file_exists(FCPATH . 'public/' . $promo_banner_path);
             <p class="heading-subtitle">Find your next treasure ♡</p>
         </div>
         <div class="categories-grid">
-            <a href="<?= base_url('/products_catalog_view') ?>"?category=new_arrivals" class="category-card">
-                <span class="cat-icon">✨</span>
-                <span class="cat-label">New Arrivals</span>
-            </a>
-            <a href="<?= base_url('/products_catalog_view') ?>"?category=clothing" class="category-card">
-                <span class="cat-icon">👗</span>
-                <span class="cat-label">Bottoms &amp; Skirts</span>
-            </a>
-            <a href="<?= base_url('/products_catalog_view') ?>"?category=accessories" class="category-card">
-                <span class="cat-icon">💍</span>
-                <span class="cat-label">Accessories</span>
-            </a>
-            <a href="<?= base_url('/products_catalog_view') ?>"?category=shoes" class="category-card">
-                <span class="cat-icon">🩰</span>
-                <span class="cat-label">Shoes</span>
-            </a>
-            <a href="<?= base_url('/products_catalog_view') ?>"?category=bags" class="category-card">
-                <span class="cat-icon">👜</span>
-                <span class="cat-label">Bags</span>
-            </a>
-            <a href="<?= base_url('/products_catalog_view') ?>"?category=last_chance" class="category-card">
-                <span class="cat-icon">🏷️</span>
-                <span class="cat-label">Last Chance</span>
+           <a href="<?= base_url('/products_catalog_view?cat=new') ?>" class="category-card cat-new">
+    <span class="cat-icon">✨</span>
+    <span class="cat-label">New Arrivals</span>
+</a>
+<a href="<?= base_url('/products_catalog_view?cat=tops') ?>" class="category-card cat-tops">
+    <span class="cat-icon">👗</span>
+    <span class="cat-label">Tops/Dresses</span>
+</a>
+<a href="<?= base_url('/products_catalog_view?cat=bottoms') ?>" class="category-card cat-bottoms">
+    <span class="cat-icon">👖</span>
+    <span class="cat-label">Bottoms &amp; Skirts</span>
+</a>
+<a href="<?= base_url('/products_catalog_view?cat=accessories') ?>" class="category-card cat-accessories">
+    <span class="cat-icon">💍</span>
+    <span class="cat-label">Accessories</span>
+</a>
+<a href="<?= base_url('/products_catalog_view?cat=bags') ?>" class="category-card cat-bags">
+    <span class="cat-icon">👜</span>
+    <span class="cat-label">Bags</span>
+</a>
+<a href="<?= base_url('/products_catalog_view?cat=last') ?>" class="category-card cat-last">
+    <span class="cat-icon">🏷️</span>
+    <span class="cat-label">Last Chance</span>
+</a>
             </a>
         </div>
     </section>
 
     <!-- New Releases Section -->
-   <section class="releases-section">
-    <div class="section-heading">
-        <h2>New Releases</h2>
-    </div>
-    <div class="releases-grid">
-        <?php foreach ($new_releases as $product): ?>
+<section class="releases-section">
+        <div class="section-heading">
+            <h2>New Releases</h2>
+        </div>
+        <div class="releases-grid">
+        <?php 
+        // Keep your existing data logic exactly as you wanted
+        $all_products = array_merge(
+            $tops_products, 
+            $bottoms_products, 
+            $accessories_products, 
+            $bags_products, 
+            $last_products
+        );
+
+        $new_arrivals = array_values(array_filter($all_products, fn($p) => $p['badge'] === 'New'));
+        $featured_new = array_slice($new_arrivals, 0, 8);
+
+        foreach ($featured_new as $product): 
+            // FIXED: Consistent image path handling (same as catalog view)
+            $img_path   = $product['img'] ?? '';
+            $full_img_path = 'public/' . $img_path;           // ← Important fix
+            $img_exists = !empty($img_path) && file_exists(FCPATH . $full_img_path);
+        ?>
             <a href="<?= base_url('/product/' . $product['id']) ?>" class="product-card">
                 <div class="product-img-wrap">
-                    <?php if (!empty($product['img']) && file_exists(FCPATH . $product['img'])): ?>
-                        <img src="<?= base_url($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="product-card-img">
+                    <?php if ($img_exists): ?>
+                        <img src="<?= base_url($full_img_path) ?>" 
+                             alt="<?= htmlspecialchars($product['name']) ?>" 
+                             class="product-card-img">
                     <?php else: ?>
                         <div class="product-card-placeholder"></div>
                     <?php endif; ?>
@@ -162,11 +207,14 @@ $promo_banner_exists = file_exists(FCPATH . 'public/' . $promo_banner_path);
                 </div>
             </a>
         <?php endforeach; ?>
-    </div>
-    <div class="see-more-wrap">
-        <a href="<?= base_url('/products_catalog_view?sort=newest') ?>" class="see-more-link">See More Here</a>
-    </div>
-</section>
+        </div>
+
+        <div class="see-more-wrap">
+            <a href="<?= base_url('/products_catalog_view?cat=new') ?>" class="see-more-link">
+                See More New Arrivals
+            </a>
+        </div>
+    </section>
 
     <!-- Why Thriftster Section -->
     <section class="why-shop-section">
