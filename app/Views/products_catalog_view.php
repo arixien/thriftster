@@ -15,10 +15,8 @@ $categories = [
 ];
 
 $products = match ($active_cat) {
-   'new' => array_slice(
-    array_values(
-        array_filter($all_products, fn($p) => !empty($p['created_at']))
-    ), 0, 12
+'new' => array_slice(
+    array_values($all_products), 0, 12
 ),
     'tops'        => array_values(array_filter($all_products, fn($p) => $p['category'] === 'tops')),
     'bottoms'     => array_values(array_filter($all_products, fn($p) => $p['category'] === 'bottoms')),
@@ -59,7 +57,7 @@ usort($products, function ($a, $b) use ($active_sort) {
         'price_asc'  => $a['price'] <=> $b['price'],
         'price_desc' => $b['price'] <=> $a['price'],
         'name'       => strcmp($a['name'], $b['name']),
-default      => strcmp($b['created_at'], $a['created_at']),
+default      => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''),
     };
 });
 
