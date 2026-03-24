@@ -1,5 +1,5 @@
 <!-- ===== SITE FOOTER ===== -->
-<link rel="stylesheet" href="public/css/includes/footer_view.css">
+<link rel="stylesheet" href="<?= base_url('public/css/includes/footer_view.css') ?>">
 <footer class="site-footer">
     <div class="footer-content container-fluid">
         <div class="footer-logo-wrap">
@@ -21,7 +21,8 @@
 </footer>
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>

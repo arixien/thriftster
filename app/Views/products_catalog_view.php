@@ -1,16 +1,9 @@
 <?php
-/**
- * products_catalog_view.php
- * Categories: New Arrivals, Tops/Dresses, Bottoms/Skirts, Accessories, Bags, Last Chance
- */
-
-// ── Active filters ──────────────────────────────────────────
 $active_cat       = $_GET['cat']  ?? 'all';
 $active_sort      = $_GET['sort'] ?? 'newest';
 $current_page_num = max(1, (int)($_GET['page'] ?? 1));
 $items_per_page   = 12;
 
-// ── Category tabs ───────────────────────────────────────────
 $categories = [
     'all'         => 'All Items',
     'new'         => 'New Arrivals',
@@ -21,103 +14,15 @@ $categories = [
     'last'        => 'Last Chance',
 ];
 
-// ── Tops/Dresses ─────────────────────────────────────────────
-$tops_products = [
-    ['id'=>101,'name'=>'Primrose Ribbed Baby Tee',    'price'=>320, 'img'=>'public/assets/tops/top1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'tops'],
-    ['id'=>102,'name'=>'Ivory Whisper Dress',         'price'=>240, 'img'=>'public/assets/tops/top2_A.png',  'badge'=>null,   'added_at'=>'2025-06-08','condition'=>'good',     'category'=>'tops'],
-    ['id'=>103,'name'=>'Mauve Bow-Lace Bodice',       'price'=>380, 'img'=>'public/assets/tops/top3_A.png',  'badge'=>null,   'added_at'=>'2025-06-05','condition'=>'good',     'category'=>'tops'],
-    ['id'=>104,'name'=>'Bluebell Reverie Dress',      'price'=>290, 'img'=>'public/assets/tops/top4_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-01','condition'=>'excellent','category'=>'tops'],
-    ['id'=>105,'name'=>'Sage Tie-Front Cardigan',     'price'=>410, 'img'=>'public/assets/tops/top5_A.png',  'badge'=>'New',  'added_at'=>'2025-06-12','condition'=>'excellent','category'=>'tops'],
-    ['id'=>106,'name'=>'Cornflower Blue Velour Crop', 'price'=>350, 'img'=>'public/assets/tops/top6_A.png',  'badge'=>null,   'added_at'=>'2025-05-28','condition'=>'good',     'category'=>'tops'],
-    ['id'=>107,'name'=>'Rosé Petaline Dress',         'price'=>460, 'img'=>'public/assets/tops/top7_A.png',  'badge'=>null,   'added_at'=>'2025-05-25','condition'=>'excellent','category'=>'tops'],
-    ['id'=>108,'name'=>'Cream Pointelle Knit Polo',   'price'=>270, 'img'=>'public/assets/tops/top8_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-20','condition'=>'fair',     'category'=>'tops'],
-    ['id'=>109,'name'=>'Emerald Corset Dress',        'price'=>300, 'img'=>'public/assets/tops/top9_A.png',  'badge'=>null,   'added_at'=>'2025-05-18','condition'=>'good',     'category'=>'tops'],
-    ['id'=>110,'name'=>'Rosé Satin Lace Dress',       'price'=>330, 'img'=>'public/assets/tops/top10_A.png', 'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'tops'],
-    ['id'=>111,'name'=>'Milkmaid Chiffon Bustier',    'price'=>390, 'img'=>'public/assets/tops/top11_A.png', 'badge'=>null,   'added_at'=>'2025-05-15','condition'=>'good',     'category'=>'tops'],
-    ['id'=>112,'name'=>'Midnight Bloom Dress',        'price'=>250, 'img'=>'public/assets/tops/top12_A.png', 'badge'=>null,   'added_at'=>'2025-05-10','condition'=>'good',     'category'=>'tops'],
-];
-
-// ── Bottoms/Skirts ───────────────────────────────────────────
-$bottoms_products = [
-    ['id'=>201,'name'=>'Lorem Ipsum 1',  'price'=>450, 'img'=>'public/assets/bottoms/bottoms1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>202,'name'=>'Lorem Ipsum 2',  'price'=>380, 'img'=>'public/assets/bottoms/bottoms2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>203,'name'=>'Lorem Ipsum 3',  'price'=>290, 'img'=>'public/assets/bottoms/bottoms3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>204,'name'=>'Lorem Ipsum 4',  'price'=>520, 'img'=>'public/assets/bottoms/bottoms4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>205,'name'=>'Lorem Ipsum 5',  'price'=>340, 'img'=>'public/assets/bottoms/bottoms5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'bottoms'],
-    ['id'=>206,'name'=>'Lorem Ipsum 6',  'price'=>480, 'img'=>'public/assets/bottoms/bottoms6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>207,'name'=>'Lorem Ipsum 7',  'price'=>360, 'img'=>'public/assets/bottoms/bottoms7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>208,'name'=>'Lorem Ipsum 8',  'price'=>410, 'img'=>'public/assets/bottoms/bottoms8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'bottoms'],
-    ['id'=>209,'name'=>'Lorem Ipsum 9',  'price'=>550, 'img'=>'public/assets/bottoms/bottoms9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>210,'name'=>'Lorem Ipsum 10', 'price'=>320, 'img'=>'public/assets/bottoms/bottoms10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'bottoms'],
-    ['id'=>211,'name'=>'Lorem Ipsum 11', 'price'=>300, 'img'=>'public/assets/bottoms/bottoms11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'bottoms'],
-    ['id'=>212,'name'=>'Lorem Ipsum 12', 'price'=>490, 'img'=>'public/assets/bottoms/bottoms12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'bottoms'],
-];
-
-// ── Accessories ──────────────────────────────────────────────
-$accessories_products = [
-    ['id'=>301,'name'=>'Accessories 1',  'price'=>180, 'img'=>'public/assets/accessories/accessories1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'accessories'],
-    ['id'=>302,'name'=>'Accessories 2',  'price'=>120, 'img'=>'public/assets/accessories/accessories2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'accessories'],
-    ['id'=>303,'name'=>'Accessories 3',  'price'=>95,  'img'=>'public/assets/accessories/accessories3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'accessories'],
-    ['id'=>304,'name'=>'Accessories 4',  'price'=>220, 'img'=>'public/assets/accessories/accessories4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'accessories'],
-    ['id'=>305,'name'=>'Accessories 5',  'price'=>150, 'img'=>'public/assets/accessories/accessories5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'accessories'],
-    ['id'=>306,'name'=>'Accessories 6',  'price'=>175, 'img'=>'public/assets/accessories/accessories6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'accessories'],
-    ['id'=>307,'name'=>'Accessories 7',  'price'=>130, 'img'=>'public/assets/accessories/accessories7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'accessories'],
-    ['id'=>308,'name'=>'Accessories 8',  'price'=>200, 'img'=>'public/assets/accessories/accessories8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'accessories'],
-    ['id'=>309,'name'=>'Accessories 9',  'price'=>90,  'img'=>'public/assets/accessories/accessories9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'accessories'],
-    ['id'=>310,'name'=>'Accessories 10', 'price'=>160, 'img'=>'public/assets/accessories/accessories10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'accessories'],
-    ['id'=>311,'name'=>'Accessories 11', 'price'=>110, 'img'=>'public/assets/accessories/accessories11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'accessories'],
-    ['id'=>312,'name'=>'Accessories 12', 'price'=>195, 'img'=>'public/assets/accessories/accessories12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'accessories'],
-];
-
-// ── Bags ─────────────────────────────────────────────────────
-$bags_products = [
-    ['id'=>401,'name'=>'Bags 1',  'price'=>580, 'img'=>'public/assets/bags/bags1_A.png',  'badge'=>'New',  'added_at'=>'2025-06-14','condition'=>'excellent','category'=>'bags'],
-    ['id'=>402,'name'=>'Bags 2',  'price'=>420, 'img'=>'public/assets/bags/bags2_A.png',  'badge'=>null,   'added_at'=>'2025-06-10','condition'=>'good',     'category'=>'bags'],
-    ['id'=>403,'name'=>'Bags 3',  'price'=>350, 'img'=>'public/assets/bags/bags3_A.png',  'badge'=>null,   'added_at'=>'2025-06-07','condition'=>'good',     'category'=>'bags'],
-    ['id'=>404,'name'=>'Bags 4',  'price'=>720, 'img'=>'public/assets/bags/bags4_A.png',  'badge'=>'New',  'added_at'=>'2025-06-13','condition'=>'excellent','category'=>'bags'],
-    ['id'=>405,'name'=>'Bags 5',  'price'=>490, 'img'=>'public/assets/bags/bags5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-06-02','condition'=>'fair',     'category'=>'bags'],
-    ['id'=>406,'name'=>'Bags 6',  'price'=>610, 'img'=>'public/assets/bags/bags6_A.png',  'badge'=>null,   'added_at'=>'2025-05-29','condition'=>'excellent','category'=>'bags'],
-    ['id'=>407,'name'=>'Bags 7',  'price'=>380, 'img'=>'public/assets/bags/bags7_A.png',  'badge'=>null,   'added_at'=>'2025-05-24','condition'=>'good',     'category'=>'bags'],
-    ['id'=>408,'name'=>'Bags 8',  'price'=>540, 'img'=>'public/assets/bags/bags8_A.png',  'badge'=>null,   'added_at'=>'2025-05-20','condition'=>'excellent','category'=>'bags'],
-    ['id'=>409,'name'=>'Bags 9',  'price'=>660, 'img'=>'public/assets/bags/bags9_A.png',  'badge'=>'New',  'added_at'=>'2025-06-11','condition'=>'good',     'category'=>'bags'],
-    ['id'=>410,'name'=>'Bags 10', 'price'=>310, 'img'=>'public/assets/bags/bags10_A.png', 'badge'=>null,   'added_at'=>'2025-05-16','condition'=>'good',     'category'=>'bags'],
-    ['id'=>411,'name'=>'Bags 11', 'price'=>290, 'img'=>'public/assets/bags/bags11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-05-12','condition'=>'fair',     'category'=>'bags'],
-    ['id'=>412,'name'=>'Bags 12', 'price'=>750, 'img'=>'public/assets/bags/bags12_A.png', 'badge'=>null,   'added_at'=>'2025-05-08','condition'=>'excellent','category'=>'bags'],
-];
-
-// ── Last Chance ──────────────────────────────────────────────
-$last_products = [
-    ['id'=>501,'name'=>'Last Chance 1',  'price'=>150, 'img'=>'public/assets/last/last1_A.png',  'badge'=>'Sale', 'added_at'=>'2025-05-01','condition'=>'fair',     'category'=>'last'],
-    ['id'=>502,'name'=>'Last Chance 2',  'price'=>120, 'img'=>'public/assets/last/last2_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-28','condition'=>'fair',     'category'=>'last'],
-    ['id'=>503,'name'=>'Last Chance 3',  'price'=>90,  'img'=>'public/assets/last/last3_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-25','condition'=>'good',     'category'=>'last'],
-    ['id'=>504,'name'=>'Last Chance 4',  'price'=>200, 'img'=>'public/assets/last/last4_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-22','condition'=>'fair',     'category'=>'last'],
-    ['id'=>505,'name'=>'Last Chance 5',  'price'=>180, 'img'=>'public/assets/last/last5_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-19','condition'=>'good',     'category'=>'last'],
-    ['id'=>506,'name'=>'Last Chance 6',  'price'=>75,  'img'=>'public/assets/last/last6_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-16','condition'=>'fair',     'category'=>'last'],
-    ['id'=>507,'name'=>'Last Chance 7',  'price'=>230, 'img'=>'public/assets/last/last7_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-13','condition'=>'good',     'category'=>'last'],
-    ['id'=>508,'name'=>'Last Chance 8',  'price'=>110, 'img'=>'public/assets/last/last8_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-10','condition'=>'fair',     'category'=>'last'],
-    ['id'=>509,'name'=>'Last Chance 9',  'price'=>165, 'img'=>'public/assets/last/last9_A.png',  'badge'=>'Sale', 'added_at'=>'2025-04-07','condition'=>'good',     'category'=>'last'],
-    ['id'=>510,'name'=>'Last Chance 10', 'price'=>95,  'img'=>'public/assets/last/last10_A.png', 'badge'=>'Sale', 'added_at'=>'2025-04-04','condition'=>'fair',     'category'=>'last'],
-    ['id'=>511,'name'=>'Last Chance 11', 'price'=>140, 'img'=>'public/assets/last/last11_A.png', 'badge'=>'Sale', 'added_at'=>'2025-04-01','condition'=>'fair',     'category'=>'last'],
-    ['id'=>512,'name'=>'Last Chance 12', 'price'=>85,  'img'=>'public/assets/last/last12_A.png', 'badge'=>'Sale', 'added_at'=>'2025-03-29','condition'=>'good',     'category'=>'last'],
-];
-
-// ── All products pool (reused for 'all' tab and 'new' filter) ─
-$all_products = array_merge(
-    $tops_products,
-    $bottoms_products,
-    $accessories_products,
-    $bags_products,
-    $last_products
-);
-
-// ── Select active dataset ─────────────────────────────────────
 $products = match ($active_cat) {
-    'new'         => array_values(array_filter($all_products, fn($p) => $p['badge'] === 'New')),
-    'tops'        => $tops_products,
-    'bottoms'     => $bottoms_products,
-    'accessories' => $accessories_products,
-    'bags'        => $bags_products,
-    'last'        => $last_products,
+'new' => array_slice(
+    array_values($all_products), 0, 12
+),
+    'tops'        => array_values(array_filter($all_products, fn($p) => $p['category'] === 'tops')),
+    'bottoms'     => array_values(array_filter($all_products, fn($p) => $p['category'] === 'bottoms')),
+    'accessories' => array_values(array_filter($all_products, fn($p) => $p['category'] === 'accessories')),
+    'bags'        => array_values(array_filter($all_products, fn($p) => $p['category'] === 'bags')),
+    'last'        => array_values(array_filter($all_products, fn($p) => $p['category'] === 'last')),
     default       => $all_products,
 };
 
@@ -152,7 +57,7 @@ usort($products, function ($a, $b) use ($active_sort) {
         'price_asc'  => $a['price'] <=> $b['price'],
         'price_desc' => $b['price'] <=> $a['price'],
         'name'       => strcmp($a['name'], $b['name']),
-        default      => strcmp($b['added_at'], $a['added_at']),
+default      => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''),
     };
 });
 
@@ -192,17 +97,17 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($page_title) ?> — Thrift Store</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎀</text></svg>">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="includes/header_view.css">
-    <link rel="stylesheet" href="public/css/pages/products_catalog_view.css">
+   <link rel="stylesheet" href="<?= base_url('public/css/includes/header_view.css') ?>">
+<link rel="stylesheet" href="<?= base_url('public/css/pages/products_catalog_view.css') ?>">
 </head>
 <body>
 
-    <?php include 'includes/header_view.php'; ?>
-
+<?= view('includes/header_view') ?>
     <main class="catalog-main">
         <div class="container-fluid catalog-container">
 
@@ -314,14 +219,14 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                         <article class="product-card">
 
                             <!-- Badge (New / Sale) -->
-                            <?php if ($product['badge']): ?>
-                                <span class="product-badge <?= strtolower($product['badge']) ?>">
-                                    <?= htmlspecialchars($product['badge']) ?>
-                                </span>
-                            <?php endif; ?>
+                    <?php if (!empty($product['badge']) && $active_cat === 'new'): ?>
+    <span class="product-badge <?= strtolower($product['badge']) ?>">
+        <?= htmlspecialchars($product['badge']) ?>
+    </span>
+<?php endif; ?>
 
                             <!-- Image -->
-                            <a href="product_detail.php?id=<?= $product['id'] ?>" class="product-img-link">
+                            <a href="<?= base_url('/product/' . $product['id']) ?>" class="product-img-link">
                                 <div class="product-img-wrap">
                                     <?php if ($img_exists): ?>
                                         <img
@@ -349,7 +254,7 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                             <!-- Info -->
                             <div class="product-info">
                                 <div class="product-meta">
-                                    <a href="product_detail.php?id=<?= $product['id'] ?>" class="product-name">
+                                    <a href="<?= base_url('/product/' . $product['id']) ?>" class="product-name">
                                         <?= htmlspecialchars($product['name']) ?>
                                     </a>
                                     <div class="product-bottom-row">
@@ -359,10 +264,15 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
                                         </span>
                                     </div>
                                 </div>
-                                <button class="add-to-cart-btn" aria-label="Add to cart"
-                                        data-product-id="<?= $product['id'] ?>">
-                                    <i class="bi bi-bag-plus"></i>
-                                </button>
+                            <form action="<?= base_url('/cart/add') ?>" method="POST" style="display:inline;">
+    <?= csrf_field() ?>
+    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+    <input type="hidden" name="quantity" value="1">
+    <button type="submit" class="add-to-cart-btn" aria-label="Add to cart"
+            data-product-id="<?= $product['id'] ?>">
+        <i class="bi bi-bag-plus"></i>
+    </button>
+</form>
                             </div>
 
                         </article>
@@ -498,9 +408,9 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     /* ── Add to Cart feedback ── */
+    
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', function () {
             const icon = this.querySelector('i');
@@ -513,6 +423,7 @@ $page_title = $categories[$active_cat] ?? 'Product Catalog';
         });
     });
     </script>
+<?= view('includes/footer_view') ?>
 
 </body>
 </html>

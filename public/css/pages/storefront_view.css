@@ -336,8 +336,8 @@ h5, h6, .subheading-font {
 .releases-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    max-width: 1420px;
+    gap: 3rem;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -600,9 +600,8 @@ h5, h6, .subheading-font {
     .categories-grid  { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .cat-icon         { width: 56px; height: 56px; font-size: 1.5rem; }
     .categories-heading h2 { font-size: 1.4rem; }
-    .releases-grid    { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    .why-shop-grid    { grid-template-columns: 1fr; }
-    .why-shop-title   { font-size: 1.5rem; }
-    .why-card         { padding: 2rem 1.5rem 1.5rem; }
-    .hero-banner      { height: 240px; padding-bottom: 1.25rem; }
+    .releases-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .why-shop-grid { grid-template-columns: 1fr; }
+    .why-shop-title { font-size: 1.5rem; }
+    .why-card { padding: 2rem 1.5rem 1.5rem; }
 }

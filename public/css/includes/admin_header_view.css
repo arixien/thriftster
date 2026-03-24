@@ -1,0 +1,353 @@
+/* ============================================================
+   header_view.css — Thrift Store Site Header
+   Brand Palette:
+     Rose Pink   → #E6A7B2
+     Blush       → #E2B4B8
+     Warm Taupe  → #D2C4BC
+     Soft Lilac  → #E0CCD8
+     Pale Blush  → #EDCED4
+   Fonts: Cinzel Bold / Crimson Pro Bold / Poppins Regular
+   ============================================================ */
+
+/* ── Google Fonts (mirror import for standalone CSS use) ──── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Crimson+Pro:wght@600;700&family=Poppins:wght@300;400;500&family=Roboto:wght@300;400&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+    /* Brand Palette */
+    --clr-rose:      #E6A7B2;
+    --clr-blush:     #E2B4B8;
+    --clr-taupe:     #D2C4BC;
+    --clr-lilac:     #E0CCD8;
+    --clr-pale:      #EDCED4;
+
+    /* Derived Tones */
+    --clr-rose-dark:    #c97d8e;
+    --clr-rose-deeper:  #a85d6e;
+    --clr-bg-header:    #fdf6f7;   /* near-white blush tint */
+    --clr-text-dark:    #3a2d30;   /* warm near-black */
+    --clr-text-mid:     #6b4f55;
+    --clr-text-light:   #9e7880;
+    --clr-border:       #e8d4d8;
+    --clr-white:        #ffffff;
+
+    /* Typography */
+    --font-title:    'Cinzel', 'Roboto', serif;
+    --font-sub:      'Crimson Pro', Georgia, serif;
+    --font-body:     'Poppins', 'Roboto', sans-serif;
+
+    /* Sizing */
+    --header-height: 72px;
+    --logo-size:     46px;
+    --radius-pill:   999px;
+    --radius-md:     10px;
+    --radius-sm:     6px;
+
+    /* Shadows */
+    --shadow-header: 0 2px 20px rgba(230, 167, 178, 0.18), 0 1px 4px rgba(58, 45, 48, 0.06);
+    --shadow-dropdown: 0 8px 32px rgba(180, 110, 130, 0.14), 0 2px 8px rgba(58, 45, 48, 0.08);
+    --shadow-search: 0 2px 12px rgba(230, 167, 178, 0.25);
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --speed-fast: 150ms;
+    --speed-mid:  250ms;
+}
+
+/* ── Reset / Base ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text-dark);
+    background: #faf5f6;
+    padding-top: var(--header-height);  /* offset for fixed header */
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   SITE HEADER
+   ══════════════════════════════════════════════════════════════ */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    background: var(--clr-bg-header);
+    border-bottom: 1.5px solid var(--clr-border);
+    box-shadow: var(--shadow-header);
+    transition: box-shadow var(--speed-mid) var(--ease-out);
+}
+
+/* Subtle lace-like top border accent */
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--clr-pale)    0%,
+        var(--clr-rose)   25%,
+        var(--clr-blush)  50%,
+        var(--clr-lilac)  75%,
+        var(--clr-pale)  100%
+    );
+}
+
+/* Scrolled state */
+.site-header.scrolled {
+    box-shadow: 0 4px 24px rgba(230, 167, 178, 0.28), 0 1px 6px rgba(58, 45, 48, 0.1);
+}
+
+/* ── Header Inner Layout ──────────────────────────────────── */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MIDDLE SECTION
+   ══════════════════════════════════════════════════════════════ */
+
+.header-middle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.admin-title {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+    pointer-events: auto;
+    letter-spacing: 0.5px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   LOGO
+   ══════════════════════════════════════════════════════════════ */
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: opacity var(--speed-fast) ease;
+}
+
+.logo-link:hover {
+    opacity: 0.85;
+}
+
+/* Circle badge */
+.logo-badge {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    border-radius: 50%;
+    border: 2px solid var(--clr-rose);
+    background: linear-gradient(135deg, var(--clr-pale) 0%, var(--clr-lilac) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(230, 167, 178, 0.20);
+    transition: box-shadow var(--speed-mid) var(--ease-out);
+}
+
+.logo-link:hover .logo-badge {
+    box-shadow: 0 0 0 5px rgba(230, 167, 178, 0.30);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-fallback {
+    font-size: 20px;
+    color: var(--clr-rose-dark);
+}
+
+/* Text */
+.logo-text-wrap {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-name {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--clr-text-dark);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.logo-accent {
+    color: var(--clr-rose-dark);
+}
+
+.logo-tagline {
+    font-family: var(--font-sub);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--clr-text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HEADER NAVIGATION
+   ══════════════════════════════════════════════════════════════ */
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+/* ── Nav Links ─────────────────────────────────────────────── */
+.nav-item-wrap {
+    position: relative;
+}
+
+.nav-link-custom {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sub);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--clr-text-mid);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition:
+        color      var(--speed-fast) ease,
+        background var(--speed-fast) ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+    color: var(--clr-rose-deeper);
+    background: rgba(230, 167, 178, 0.12);
+}
+
+.nav-link-custom.active {
+    position: relative;
+}
+
+.nav-link-custom.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--clr-rose);
+}
+
+.logout-nav-btn {
+    border: 1.5px solid var(--clr-rose);
+    border-radius: var(--radius-md) !important;
+    padding: 6px 16px !important;
+    margin-left: 10px;
+    color: var(--clr-rose-dark) !important;
+    transition: all 0.3s ease;
+}
+
+.logout-nav-btn:hover {
+    background-color: var(--clr-rose) !important;
+    color: white !important;
+    border-color: var(--clr-rose) !important;
+}
+
+.nav-chevron {
+    font-size: 0.65rem;
+    transition: transform var(--speed-mid) var(--ease-out);
+}
+
+.nav-link-custom[aria-expanded="true"] .nav-chevron {
+    transform: rotate(180deg);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLL BEHAVIOR JS HOOK  (add class via JS)
+   ══════════════════════════════════════════════════════════════ */
+/*
+   document.addEventListener('scroll', () => {
+       document.querySelector('.site-header')
+           .classList.toggle('scrolled', window.scrollY > 12);
+   });
+*/
+
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════════════ */
+
+/* Large screens: show full tagline */
+@media (min-width: 1200px) {
+    .logo-tagline { display: block; }
+    .search-form  { max-width: 600px; }
+}
+
+/* Medium screens */
+@media (max-width: 1199px) {
+    .logo-tagline { display: none; }
+    .search-form  { max-width: 400px; }
+}
+
+/* Tablet: hide catalog dropdown, keep icon nav */
+@media (max-width: 991px) {
+    .header-nav .nav-item-wrap { display: none; }
+    .cart-btn { display: flex; }
+}
+
+/* Mobile: collapse everything */
+@media (max-width: 767px) {
+    :root { --header-height: 62px; }
+
+    .logo-name  { font-size: 1.05rem; }
+    .logo-badge { width: 38px; height: 38px; }
+    .search-form { display: none; }  /* moved into offcanvas */
+    .cart-btn { width: 38px; height: 38px; }
+    .cart-icon-wrap { font-size: 1.2rem; }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+    .logo-text-wrap { display: none; }
+}   

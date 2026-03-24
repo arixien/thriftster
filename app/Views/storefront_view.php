@@ -98,16 +98,8 @@ $promo_banner_exists = file_exists(FCPATH . $promo_banner_path);
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-banner">
-            <?php if ($promo_banner_exists): ?>
-                <img
-                    src="<?= base_url($promo_banner_path) ?>"
-                    alt="Promotional Banner"
-                    class="promo-banner-img"
-                >
-            <?php else: ?>
-                <h1 class="hero-title">Promotional Banner</h1>
-            <?php endif; ?>
-            <a href="products_catalog_view?cat=all&page=1" class="shop-now-btn">Shop Now</a>
+            <h1 class="hero-title">Promotional Banner</h1>
+            <a href="catalog" class="shop-now-btn">Shop Now</a>
         </div>
     </section>
 
@@ -119,27 +111,27 @@ $promo_banner_exists = file_exists(FCPATH . $promo_banner_path);
             <p class="heading-subtitle">Find your next treasure ♡</p>
         </div>
         <div class="categories-grid">
-            <a href="products_catalog_view?cat=new&page=1" class="category-card cat-new">
+            <a href="catalog?category=new_arrivals" class="category-card">
                 <span class="cat-icon">✨</span>
                 <span class="cat-label">New Arrivals</span>
             </a>
-            <a href="products_catalog_view?cat=tops&page=1" class="category-card cat-tops">
-                <span class="cat-icon">👚</span>
-                <span class="cat-label">Tops &amp; Dresses</span>
-            </a>
-            <a href="products_catalog_view?cat=bottoms&page=1" class="category-card cat-bottoms">
+            <a href="catalog?category=clothing" class="category-card">
                 <span class="cat-icon">👗</span>
                 <span class="cat-label">Bottoms &amp; Skirts</span>
             </a>
-            <a href="products_catalog_view?cat=accessories&page=1" class="category-card cat-accessories">
+            <a href="catalog?category=accessories" class="category-card">
                 <span class="cat-icon">💍</span>
                 <span class="cat-label">Accessories</span>
             </a>
-            <a href="products_catalog_view?cat=bags&page=1" class="category-card cat-bags">
+            <a href="catalog?category=shoes" class="category-card">
+                <span class="cat-icon">🩰</span>
+                <span class="cat-label">Shoes</span>
+            </a>
+            <a href="catalog?category=bags" class="category-card">
                 <span class="cat-icon">👜</span>
                 <span class="cat-label">Bags</span>
             </a>
-            <a href="products_catalog_view?cat=last&page=1" class="category-card cat-last">
+            <a href="catalog?category=last_chance" class="category-card">
                 <span class="cat-icon">🏷️</span>
                 <span class="cat-label">Last Chance</span>
             </a>
@@ -152,55 +144,18 @@ $promo_banner_exists = file_exists(FCPATH . $promo_banner_path);
             <h2>New Releases</h2>
         </div>
         <div class="releases-grid">
-            <?php foreach ($featured_new as $product):
-                $img_exists = !empty($product['img']) && file_exists(FCPATH . $product['img']);
-            ?>
-                <a href="products_catalog_view/product_detail/<?= $product['id'] ?>" class="product-card">
-                    <?php if ($img_exists): ?>
-                        <img
-                            src="<?= base_url(htmlspecialchars($product['img'])) ?>"
-                            alt="<?= htmlspecialchars($product['name']) ?>"
-                            class="product-card-img"
-                            loading="lazy"
-                            width="400" height="400"
-                        >
-                    <?php else: ?>
-                        <div class="product-card-placeholder" aria-hidden="true">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="200" height="200" fill="#f5ecee"/>
-                                <line x1="0" y1="0" x2="200" y2="200" stroke="#d4b0b8" stroke-width="1.2"/>
-                                <line x1="200" y1="0" x2="0" y2="200" stroke="#d4b0b8" stroke-width="1.2"/>
-                                <rect x="1" y="1" width="198" height="198" fill="none"
-                                      stroke="#d4b0b8" stroke-width="1.2" rx="4"/>
-                            </svg>
-                        </div>
-                    <?php endif; ?>
-                    <div class="product-card-info">
-                        <span class="product-card-name"><?= htmlspecialchars($product['name']) ?></span>
-                        <span class="product-card-price">₱<?= number_format($product['price']) ?></span>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-
-            <?php
-            // Fill remaining slots with empty placeholders if fewer than 8 new items
-            $remaining = 8 - count($featured_new);
-            for ($i = 0; $i < $remaining; $i++): ?>
-                <div class="product-card product-card-empty">
-                    <div class="product-card-placeholder" aria-hidden="true">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="200" fill="#f5ecee"/>
-                            <line x1="0" y1="0" x2="200" y2="200" stroke="#d4b0b8" stroke-width="1.2"/>
-                            <line x1="200" y1="0" x2="0" y2="200" stroke="#d4b0b8" stroke-width="1.2"/>
-                            <rect x="1" y="1" width="198" height="198" fill="none"
-                                  stroke="#d4b0b8" stroke-width="1.2" rx="4"/>
-                        </svg>
-                    </div>
-                </div>
-            <?php endfor; ?>
+            <div class="product-card"></div>
+            <div class="product-card"></div>
+            <div class="product-card"></div>
+            <div class="product-card"></div>
+            
+            <div class="product-card"></div>
+            <div class="product-card"></div>
+            <div class="product-card"></div>
+            <div class="product-card"></div>
         </div>
         <div class="see-more-wrap">
-            <a href="products_catalog_view?cat=new&page=1" class="see-more-link">See More Here</a>
+            <a href="catalog?sort=newest" class="see-more-link">See More Here</a>
         </div>
     </section>
 

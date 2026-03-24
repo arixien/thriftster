@@ -22,6 +22,7 @@ class Auth extends BaseController
                     'username' => $this->request->getPost('username'),
                     'email'    => $this->request->getPost('email'),
                     'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                    'role'     => 'user'
                 ]);
                 return redirect()->to('/auth/login');
             } else {
@@ -32,25 +33,35 @@ class Auth extends BaseController
         return view('register', $data);
     }
 
-    public function login()
-    {
-        helper(['form']);
-        $data = [];
+   public function login()
+{
+    helper(['form']);
+    $data = [];
 
-        if ($this->request->is('post')) {
-            $model = new UserModel();
-            $user = $model->where('username', $this->request->getPost('username'))->first();
+    if ($this->request->is('post')) {
+        $model = new UserModel();
+        $user = $model->where('username', $this->request->getPost('username'))->first();
+        session()->set('show_loader', true);
+        if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+          session()->set('user_id',   $user['id']);
+        session()->set('user_name', $user['username']);
+        session()->set('username',  $user['username']);
+        session()->set('role',      $user['role']);
 
-            if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
-                session()->set('username', $user['username']);
-                return redirect()->to('/dashboard');
+            // 👇 redirect based on role
+            if ($user['role'] === 'admin') {
+                return redirect()->to('/admin_dashboard');
             } else {
-                $data['error'] = 'Invalid username or password';
+                 return redirect()->to('/profile');
             }
-        }
 
-        return view('login', $data);
+        } else {
+            $data['error'] = 'Invalid username or password';
+        }
     }
+
+    return view('login', $data);
+}
 
     public function logout()
     {
