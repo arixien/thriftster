@@ -14,7 +14,7 @@
 
         <!-- Page Title -->
         <div class="page-title-wrap">
-            <span class="heading-bow">🎀</span>
+            <span class="heading-clipboard">📋</span>
             <h1 class="page-title">Order History</h1>
             <p class="page-subtitle">A little trail of your most treasured finds ♡</p>
         </div>
