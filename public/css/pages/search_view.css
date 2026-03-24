@@ -1,0 +1,23 @@
+/* ============================================================
+   search_view.css — Search Results Page
+   Imports all card/layout styles from products_catalog_view.css
+   Only adds search-specific overrides below.
+   ============================================================ */
+
+@import url('products_catalog_view.css');
+
+/* ── Search title italic em ─────────────────────────────────── */
+.catalog-title-em {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    color: var(--clr-rose-deeper);
+}
+
+/* ── Keyword highlight in search results ────────────────────── */
+mark {
+    background: rgba(230, 167, 178, 0.25);
+    color: var(--clr-rose-deeper);
+    border-radius: 3px;
+    padding: 0 2px;
+    font-style: normal;
+}
