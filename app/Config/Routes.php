@@ -21,6 +21,7 @@ $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/account', 'Account::index');
 $routes->get('/orders', 'Orders::index');
+$routes->get('/order_history', 'OrderHistory::index');
 $routes->get('/wishlist', 'Wishlist::index');
 $routes->get('profile', 'Profile::index');
 $routes->get('profile/edit', 'Profile::edit');

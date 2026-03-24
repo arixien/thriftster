@@ -58,7 +58,7 @@
         <div class="divider">or</div>
 
         <p class="switch-link">
-            Don't have an account? <a href="/auth/register">Create one</a>
+            Don't have an account? <a href="<?= base_url('/auth/register') ?>">Create one</a>
         </p>
     </div>
 </div>

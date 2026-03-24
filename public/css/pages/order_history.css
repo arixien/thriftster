@@ -1,0 +1,419 @@
+/* =============================================
+   order_history_view.css — Thriftster Coquette
+   Color Palette (matches site globals):
+   #E6A7B2 - Deep pastel pink
+   #E2B4B8 - Dusty rose
+   #D2C4BC - Soft taupe
+   #E0CCD8 - Lilac pink
+   #EDCED4 - Very light pink
+   #4A3C41 - Dark text
+============================================= */
+
+/* === Page Layout === */
+.order-history-main {
+    background-color: #FAF6F7;
+    min-height: 100vh;
+    padding: 3rem 1rem 5rem;
+    font-family: 'Poppins', sans-serif;
+    color: #4A3C41;
+}
+
+.order-history-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* === Page Title === */
+.page-title-wrap {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.heading-clipboard {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+    animation: clipboardPulse 2s ease-in-out infinite;
+}
+
+@keyframes clipboardPulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.1); }
+}
+
+.page-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #4A3C41;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.page-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    color: #E6A7B2;
+    font-style: italic;
+    margin: 0.4rem 0 0;
+    letter-spacing: 0.5px;
+}
+
+/* === Filters Row === */
+.filters-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* -- Status Tabs -- */
+.status-tabs {
+    display: flex;
+    gap: 0.25rem;
+    background: #fff;
+    border: 2px solid #EDCED4;
+    border-radius: 50px;
+    padding: 0.3rem;
+    box-shadow: 0 4px 14px rgba(226, 167, 178, 0.1);
+}
+
+.tab-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #4A3C41;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tab-link:hover {
+    background: #FFF0F3;
+    color: #E6A7B2;
+}
+
+.tab-link.active {
+    background: linear-gradient(135deg, #E6A7B2 0%, #E2B4B8 100%);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(226, 167, 178, 0.35);
+}
+
+/* -- Date Filter -- */
+.date-filter-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #fff;
+    border: 2px solid #EDCED4;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 14px rgba(226, 167, 178, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.date-filter-wrap:focus-within {
+    border-color: #E6A7B2;
+    box-shadow: 0 4px 18px rgba(226, 167, 178, 0.25);
+}
+
+.date-icon {
+    font-size: 1.1rem;
+}
+
+.date-input {
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    color: #4A3C41;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* === Orders Table Wrapper === */
+.orders-table-wrap {
+    background: #fff;
+    border: 2px solid #EDCED4;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(226, 167, 178, 0.12);
+}
+
+/* === Orders Table === */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+/* -- Header Row -- */
+.orders-table thead tr {
+    background: linear-gradient(135deg, #FFF5F7 0%, #EDCED4 100%);
+    border-bottom: 2px solid #EDCED4;
+}
+
+.orders-table thead th {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #4A3C41;
+    text-align: left;
+    padding: 1.1rem 1.4rem;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.orders-table thead th:last-child {
+    text-align: right;
+}
+
+/* -- Body Rows -- */
+.order-row {
+    border-bottom: 1.5px solid #EDCED4;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.order-row:last-child {
+    border-bottom: none;
+}
+
+.order-row:hover {
+    background: linear-gradient(90deg, #FFF8F9 0%, #FFF0F3 100%);
+}
+
+.orders-table tbody td {
+    padding: 1.1rem 1.4rem;
+    color: #4A3C41;
+    vertical-align: middle;
+}
+
+/* Order ID */
+.order-id {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #E6A7B2;
+    letter-spacing: 0.5px;
+}
+
+/* Order Total */
+.order-total {
+    font-weight: 700;
+    color: #4A3C41;
+}
+
+/* -- Status Badge -- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+}
+
+.status-pending {
+    background: #FFF8E1;
+    color: #B8860B;
+    border: 1.5px solid #FFE082;
+}
+
+.status-completed {
+    background: #F0FFF4;
+    color: #276749;
+    border: 1.5px solid #C6F6D5;
+}
+
+.status-cancelled {
+    background: #FFF5F5;
+    color: #9B2C2C;
+    border: 1.5px solid #FED7D7;
+}
+
+/* -- View Button -- */
+.orders-table tbody td:last-child {
+    text-align: right;
+}
+
+.view-btn {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4A3C41;
+    background: #fff;
+    border: 1.5px solid #EDCED4;
+    border-radius: 8px;
+    padding: 0.38rem 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.view-btn:hover {
+    background: linear-gradient(135deg, #E6A7B2 0%, #E2B4B8 100%);
+    color: #fff;
+    border-color: #E6A7B2;
+    box-shadow: 0 4px 12px rgba(226, 167, 178, 0.35);
+}
+
+/* === Empty State === */
+.empty-state {
+    padding: 4rem 1rem !important;
+}
+
+.empty-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.empty-icon {
+    font-size: 2.8rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+.empty-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #D2C4BC;
+    margin: 0;
+}
+
+.empty-cta {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #E6A7B2 0%, #E2B4B8 100%);
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(226, 167, 178, 0.35);
+    transition: all 0.3s ease;
+}
+
+.empty-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(226, 167, 178, 0.45);
+}
+
+/* === Pagination === */
+.pagination-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 2.2rem;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 0.6rem;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #4A3C41;
+    background: #fff;
+    border: 1.5px solid #EDCED4;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(226, 167, 178, 0.08);
+}
+
+.page-btn:hover:not(.disabled):not(.page-ellipsis) {
+    border-color: #E6A7B2;
+    background: #FFF0F3;
+    color: #E6A7B2;
+    box-shadow: 0 4px 12px rgba(226, 167, 178, 0.2);
+}
+
+.page-btn.page-active {
+    background: linear-gradient(135deg, #E6A7B2 0%, #E2B4B8 100%);
+    color: #fff;
+    border-color: #E6A7B2;
+    box-shadow: 0 4px 14px rgba(226, 167, 178, 0.4);
+}
+
+.page-btn.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.page-ellipsis {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    cursor: default;
+    color: #D2C4BC;
+}
+
+.page-arrow {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+    .orders-table thead th:nth-child(4),
+    .orders-table tbody td:nth-child(4) {
+        display: none; /* hide Consignee on smaller screens */
+    }
+}
+
+@media (max-width: 640px) {
+    .page-title { font-size: 1.6rem; }
+
+    .filters-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .status-tabs {
+        flex-wrap: wrap;
+        border-radius: 14px;
+        padding: 0.4rem;
+    }
+
+    .tab-link {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.9rem;
+    }
+
+    .orders-table thead th,
+    .orders-table tbody td {
+        padding: 0.8rem 0.9rem;
+        font-size: 0.82rem;
+    }
+
+    /* hide date col on mobile too */
+    .orders-table thead th:nth-child(2),
+    .orders-table tbody td:nth-child(2) {
+        display: none;
+    }
+}
