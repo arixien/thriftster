@@ -10,7 +10,7 @@ class ProductModel extends Model
     protected $primaryKey       = 'id';
     protected $returnType       = 'array';
     protected $useAutoIncrement = true;
-    protected $useTimestamps    = false; // ← set to false
+    protected $useTimestamps    = false;
 
     protected $allowedFields = [
         'seller_id',
@@ -24,4 +24,16 @@ class ProductModel extends Model
         'stock',
         'badge'
     ];
+
+    // ── Storefront methods ─────────────────────────────────────
+
+    public function getByCategory(string $category): array
+    {
+        return $this->where('category', $category)->findAll();
+    }
+
+    public function getNewArrivals(int $limit = 8): array
+    {
+        return $this->where('badge', 'New')->limit($limit)->findAll();
+    }
 }
