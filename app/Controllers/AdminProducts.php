@@ -45,7 +45,7 @@ public function delete($id = null)
     }
 
     $this->db->table('products')->where('id', $id)->delete();
-    return redirect()->to('/admin/products')->with('success', 'Product deleted.');
+return redirect()->to('/admin_dashboard')->with('success', 'Product deleted.');
 }
     public function store()
 {
