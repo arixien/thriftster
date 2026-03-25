@@ -100,7 +100,7 @@
                     </table>
                 </div>
                 <div class="panel-footer">
-<a href="/admin/orders" class="view-all-btn">View Orders</a>
+                    <a href="<?= base_url('/admin/orders') ?>" class="view-all-btn">View Orders</a>
                 </div>
             </div>
 
