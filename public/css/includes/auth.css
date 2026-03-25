@@ -65,6 +65,10 @@ body {
     z-index: 1;
 }
 
+.brand-link {
+    text-decoration: none;
+}
+
 .brand-icon {
     width: 42px;
     height: 42px;
