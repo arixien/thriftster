@@ -70,7 +70,7 @@
             <!-- Team Member 4 -->
             <div class="team-card member-4">
                 <div class="team-img-wrap">
-                    <img src="<?= base_url('public/assets/images/placeholder_member4.jpg') ?>" onerror="this.src='https://ui-avatars.com/api/?name=Member+4&background=F5EEE4&color=C4A882&size=300'" alt="Team Member 4" class="team-img">
+                    <img src="<?= base_url('public/assets/includes/shane.png') ?>" onerror="this.src='https://ui-avatars.com/api/?name=Member+4&background=F5EEE4&color=C4A882&size=300'" alt="Team Member 4" class="team-img">
                 </div>
                 <div class="team-info">
                     <h3 class="team-name">Shane Oxina</h3>
