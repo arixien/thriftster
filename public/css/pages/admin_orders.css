@@ -8,6 +8,30 @@
     font-weight: 700;
 }
 
+.order-view-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.material-symbols-outlined{
+    font-size: 2.1rem;
+}
+
+.btn-back:hover {
+    color: var(--coquette-primary);
+}
+
 /* ── Orders Panel ── */
 .orders-panel {
     background-color: #fff;

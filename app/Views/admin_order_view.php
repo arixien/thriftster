@@ -1,12 +1,19 @@
 <?= view('includes/admin_header_view') ?>
-    <link rel="stylesheet" href="/thriftster/public/css/pages/admin_orders.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios" />    
+<link rel="stylesheet" href="/thriftster/public/css/pages/admin_orders.css">
     
     <main class="dashboard-container">
         
         <!-- Top header with Title and Back Button -->
         <div class="order-view-header">
+            <a href="<?= base_url('/admin/orders') ?>" class="btn-back">
+                <span class="material-symbols-outlined">
+                arrow_back_ios
+                </span>
+            </a>
+            
             <h2 class="order-id-title">Order ID: OR123-45_67</h2>
-            <a href="<?= base_url('/admin/orders') ?>" class="btn-back">Back</a>
+            
         </div>
 
         <!-- Main Panel -->
