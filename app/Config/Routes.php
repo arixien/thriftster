@@ -51,3 +51,4 @@ $routes->get('/admin/orders/view', 'AdminOrders::view');
 $routes->post('/admin/products/store', 'AdminProducts::store');
 $routes->post('/admin/products/update/(:num)', 'AdminProducts::update/$1');
 $routes->get('/admin/products/delete/(:num)', 'AdminProducts::delete/$1');
+$routes->get('/admin/orders/view/(:num)', 'AdminOrders::view/$1');

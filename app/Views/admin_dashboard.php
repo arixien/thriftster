@@ -25,7 +25,7 @@
             <div class="latest-products-panel">
                 <div class="panel-header">
                     <h2>Latest Products</h2>
-<a href="/admin/products/add" class="add-btn">Add Products</a>                </div>
+<a href="<?= base_url('admin/products/add') ?>" class="add-btn">Add Products</a>             </div>
                 <div class="table-container">
                     <table class="admin-table">
                         <thead>
@@ -54,9 +54,9 @@
             <td>$<?= esc(number_format($product['price'], 2)) ?></td>
             <td><?= esc($product['stock']) ?></td>
             <td class="actions-cell">
-                <a href="/admin/products/edit/<?= $product['id'] ?>" class="edit-btn">Edit</a>
-                <a href="/admin/products/delete/<?= $product['id'] ?>" class="delete-btn"
-                   onclick="return confirm('Delete this product?')">Delete</a>
+                <a href="<?= base_url('admin/products/edit/') ?><?= $product['id'] ?>" class="edit-btn">Edit</a> 
+                    <a href="<?= base_url('admin/products/delete/' . $product['id']) ?>" class="delete-btn"
+       onclick="return confirm('Delete this product?')">Delete</a>
             </td>
         </tr>
         <?php endforeach; ?>

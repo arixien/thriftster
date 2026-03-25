@@ -22,49 +22,36 @@
                     <thead>
                         <tr>
                             <th>Order ID</th>
+                            <th>Customer</th>
                             <th>Status</th>
                             <th>Price</th>
                             <th>MOP</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="ordersBody">
-                        <tr>
-                            <td>OR123-45_67</td>
-                            <td><span class="status-badge pending">Pending</span></td>
-                            <td>₱123.45</td>
-                            <td>Cash</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/orders/view') ?>" class="action-link">View</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>OR123-45_68</td>
-                            <td><span class="status-badge complete">Complete</span></td>
-                            <td>₱456.00</td>
-                            <td>GCash</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/orders/view') ?>" class="action-link">View</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>OR123-45_69</td>
-                            <td><span class="status-badge pending">Pending</span></td>
-                            <td>₱789.00</td>
-                            <td>Cash</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/orders/view') ?>" class="action-link">View</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>OR123-45_70</td>
-                            <td><span class="status-badge pending">Pending</span></td>
-                            <td>₱200.00</td>
-                            <td>Card</td>
-                            <td class="actions-cell">
-                                <a href="<?= base_url('/admin/orders/view') ?>" class="action-link">View</a>
-                            </td>
-                        </tr>
+                        <?php if (!empty($orders)): ?>
+                            <?php foreach ($orders as $order): ?>
+                            <tr>
+                                <td><?= esc($order['order_number']) ?></td>
+                                <td><?= esc($order['shipping_first_name'] . ' ' . $order['shipping_last_name']) ?></td>
+                                <td>
+                                    <span class="status-badge <?= esc(strtolower($order['status'])) ?>">
+                                        <?= esc(ucfirst($order['status'])) ?>
+                                    </span>
+                                </td>
+                                <td>₱<?= esc(number_format($order['total_amount'], 2)) ?></td>
+                                <td><?= esc(strtoupper($order['payment_method'])) ?></td>
+                                <td><?= esc(date('M d, Y', strtotime($order['created_at']))) ?></td>
+                                <td class="actions-cell">
+                                    <a href="<?= base_url('/admin/orders/view/' . $order['id']) ?>" class="action-link">View</a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="7">No orders found.</td></tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
                 <!-- No results message -->

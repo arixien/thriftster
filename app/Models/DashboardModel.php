@@ -27,7 +27,7 @@ class DashboardModel extends Model
 {
     return $this->db->table('products')
         ->select('id, name, category, price, stock, img')
-        ->orderBy('created_at', 'DESC')
+->orderBy('created_at', 'ASC')
         ->limit(4)
         ->get()
         ->getResultArray();
@@ -37,7 +37,7 @@ class DashboardModel extends Model
     {
         return $this->db->table('orders')
             ->select('id, status')
-            ->orderBy('created_at', 'DESC')
+->orderBy('created_at', 'ASC')
             ->limit(4)
             ->get()
             ->getResultArray();
