@@ -15,12 +15,22 @@ class AdminOrders extends BaseController
         return view('admin_orders', $data);
     }
 
-public function view($id = null)
-{
-    $model = new OrderModel();
-    $data = [
-        'order' => $model->find($id),
-    ];
-    return view('admin_order_view', $data);
-}
+    public function view($id = null)
+    {
+        $orderModel = new OrderModel();
+
+        $order = $orderModel->find($id);
+
+        if (!$order) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+
+        $data = [
+            'order'       => $order,
+            'order_items' => $orderModel->getOrderItems($id),
+        ];
+
+        return view('admin_order_view', $data);
+    }
 }

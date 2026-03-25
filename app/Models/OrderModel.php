@@ -31,5 +31,12 @@ class OrderModel extends Model
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
+
+    public function getOrderItems($orderId)
+    {
+        return $this->db->table('order_items')
+                        ->where('order_id', $orderId)
+                        ->get()
+                        ->getResultArray();
+    }
 }
-?>
