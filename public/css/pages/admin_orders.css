@@ -80,12 +80,18 @@
 }
 
 /* Sticky header while scrolling */
-.table-container thead th {
+.table-container thead {
     position: sticky;
     top: 0;
-    background-color: #fff;
     z-index: 1;
-    border-bottom: 2px solid var(--text-dark);
+}
+
+.table-container thead tr {
+    box-shadow: 0 2px 0 0 var(--text-dark);
+}
+
+.table-container thead th {
+    background-color: #fff;
 }
 
 /* ── Status Badges ── */
@@ -136,7 +142,7 @@
     font-weight: 500;
 }
 .table-container {
-    max-height: 200px; /* lower this to test */
+    max-height: 500px; /* lower this to test */
     overflow-y: auto;
     border: 2px solid var(--text-dark);
     border-radius: 10px;
